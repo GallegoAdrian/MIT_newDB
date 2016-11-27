@@ -8,7 +8,6 @@ try
 	$connect = connectDB();
 
 	$idAlumno = getAlumnoId($_SESSION["username"], $connect);
-	$username = $_SESSION["username"];
 
 	if($_GET["action"] == "list"){
 
@@ -18,7 +17,7 @@ try
 						INNER JOIN alumno AS al ON al.id_alumno = pe.id_persona
 						INNER JOIN matricula AS ma ON ma.id_alumno = al.id_alumno
 						INNER JOIN asignatura AS asi ON asi.id_asignatura = ma.id_asignatura
-						WHERE  us.username = '$username'";
+						WHERE  al.id_alumno = '$idAlumno'";
 
 		$result = mysqli_query($connect, $consulta);
 		$recordCount = mysqli_num_rows($result);
@@ -30,7 +29,7 @@ try
 						INNER JOIN alumno AS al ON al.id_alumno = pe.id_persona
 						INNER JOIN matricula AS ma ON ma.id_alumno = al.id_alumno
 						INNER JOIN asignatura AS asi ON asi.id_asignatura = ma.id_asignatura
-						WHERE  us.username = '$username'
+						WHERE  al.id_alumno = '$idAlumno'
 						ORDER BY ".$_GET["jtSorting"]. " LIMIT ".$_GET["jtStartIndex"]. ", ".$_GET["jtPageSize"].";";
 
 		$result = mysqli_query($connect, $consulta);

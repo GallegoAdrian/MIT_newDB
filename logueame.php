@@ -22,24 +22,30 @@ if(isset($_POST["username"]) && isset($_POST["pass"])){
 	 if($rolUsuario == 1)
 	 {
 		$_SESSION["username"] = $dataUsuario["username"];
-		$_SESSION["type"] = "location:alumno.php";
+		$_SESSION["type"] = "location:alumno/";
+		$_SESSION["user_type"] = "alumno";
 		echo "1";
 	 }
 	 else if($rolUsuario == 2)
 	 {
 		$_SESSION["username"] = $dataUsuario["username"];
-		$_SESSION["type"] = "location:profesor.php";
+		$_SESSION["type"] = "location:profesor/";
+		$_SESSION["user_type"] = "profesor";
 		echo "2";
 	 }
 	 else if($rolUsuario == 3)
 	 {
 		$_SESSION["username"] = $dataUsuario["username"];
-		$_SESSION["type"] = "location:coordinador.php";
+		$_SESSION["type"] = "location:coordinador/";
+		$_SESSION["user_type"] = "coordinador";
 		echo "3";
 	 }
-	 else if($dataUsuario["id_rol"]  == 4)
+	 else if($rolUsuario == 4)
 	 {
-		 echo "Secretaria";
+		$_SESSION["username"] = $dataUsuario["username"];
+		$_SESSION["type"] = "location:secretaria/";
+		$_SESSION["user_type"] = "secretaria";
+		echo "4";
 	 }
 	 else 
 	 {

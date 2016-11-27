@@ -21,6 +21,8 @@
               $(location).attr('href','profesor/');
             }else if(data=="3"){
               $(location).attr('href','coordinador/');
+            }else if(data=="4"){
+              $(location).attr('href','secretaria/');
             }else {
               $("#result").html("<div class='alert alert-dismissible alert-danger'><strong>¡Error!</strong> Usuario o password incorrectos.</div>");
             }

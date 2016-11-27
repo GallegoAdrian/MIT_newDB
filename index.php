@@ -9,6 +9,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
 	  header($_SESSION["type"]);
   }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +38,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
                         <div class="form-group">
                         <div class="row">
                           <div class="col-sm-12">
-                            <input type="text" name="username" id="username" class="form-control input input-lg" placeholder="Correo Electrónico">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback" aria-hidden="true"></span>
+                            <input type="text" name="username" id="username" class="form-control input input-lg" placeholder="Usuario">
+                            <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
                           </div>
                         </div>
                       </div>

@@ -1,30 +1,15 @@
 <?php
+header ('Content-type: text/html; charset=utf-8');
 session_start();
 if(!isset($_SESSION["username"])){
   header("location:../");
 }
-
-if($_SESSION["user_type"] == "alumno"){
-  header("location:../alumno/");
-}
-
-if($_SESSION["user_type"] == "coordinador"){
-  header("location:../coordinador/");
-}
-
-if($_SESSION["user_type"] == "secretaria"){
-  header("location:../secretaria/");
-}
-
 require('../functions.php');
-$connect = connectDB();
-$asignatura = getAsignatura($_GET['a'], $connect);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Preparadas</title>
+	<title>Secretaria</title>
 	<meta charset="UTF-8">
 	
 	<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
@@ -41,21 +26,21 @@ $asignatura = getAsignatura($_GET['a'], $connect);
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
-    
 </head>
 <body>
 	
 	<?php 
 	getHeader('../');
 	?>
-	<div id="general" class="cd-main-content">
+	<main id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Asignatura impartida: <?=$asignatura['descripcion']?></h1>
+			<h1 class="page-header">Home</h1>
+			<div id="PeopleTableContainer"></div>
 		</section>
-	</div>
+	</main>
 	<?php
-		getMenu(2, $connect);
-		echo $_SESSION['type'];
+	header ('Content-type: text/html; charset=utf-8');
+		getMenu(4, $connect);
 		footer();
 	?>
 </body>

@@ -72,7 +72,7 @@ function getAsignatura($code, $connect){
 function getAlumnoId($username, $connect){
 	$result = select($connect,
 			'al.id_alumno as id', 'alumno al, persona pe, usuario us',
-			'al.id_alumno = pe.id_persona AND us.id_usuario = pe.id_persona and us.username = "'.$_SESSION['username'].'" LIMIT 1');
+			'al.id_alumno = pe.id_persona AND us.id_usuario = pe.id_persona and us.username = "'.$username.'" LIMIT 1');
 	$row = mysqli_fetch_array($result);
 
 	return intval($row['id']);
@@ -80,7 +80,7 @@ function getAlumnoId($username, $connect){
 
 //devuelve el "Nombre completo" de la persona (apellidos, nombre) -- PARAMETROS: username (username del usuario) y connect (variable que retorna connectDB)
 function getDatosPersona($username, $connect){
-	$result = select($connect, 'concat(pe.apellidos,", ",pe.nombre) as nombre', 'persona pe, usuario us', 'us.id_usuario = pe.id_persona and us.username = "'.$_SESSION['username'].'" LIMIT 1');
+	$result = select($connect, 'concat(pe.apellidos,", ",pe.nombre) as nombre', 'persona pe, usuario us', 'us.id_usuario = pe.id_persona and us.username = "'.$username.'" LIMIT 1');
 	$row = mysqli_fetch_array($result);
 	//return $row;
 	return $row['nombre'];
@@ -116,7 +116,7 @@ function getHeader($ruta = null){
 }
 //Retorna el footer
 function footer(){
-	echo "<footer><div style='float: left; text-align: left;'>Alumne: Llorens.Anna / 46258585M<br>Professor: GOMEZ.EVA / 21111222A<br>Coordinador: CIFUENTES.AGAPITO / 55777666A</div><span> © MIT, 2016-2017</span></footer>";
+	echo "<footer><div style='float: left; text-align: left;'>Alumne: Llorens.Anna / 46258585M<br>Professor: GOMEZ.EVA / 21111222A<br>Coordinador: CIFUENTES.AGAPITO / 55777666A<br>Secretaria: god / god</div><span> © MIT, 2016-2017</span></footer>";
 }
 /*
 type:
@@ -129,11 +129,11 @@ type:
 //Retorna el menú según el usuario
 	function getMenu($type, $connect){
 	// obtiene nombre completo persona
-	$nombrePer = getDatosPersona($username, $connect);
+	$nombrePer = getDatosPersona($_SESSION['username'], $connect);
+	
 	//obtiene nombre y url de la tabla menu
 	$consulta = "SELECT nombre, url FROM menu WHERE tipo_usuario = '$type'";
 	$result = mysqli_query($connect, $consulta);
-	$cont = 0;
 			echo '<nav id="cd-lateral-nav">
 			<ul class="cd-navigation">
 			<div class="profile">
@@ -187,6 +187,8 @@ type:
 						}
 					}
 					echo '</ul></li>';
+				}else if($type == 4){
+					echo $_SERVER['REQUEST_URI'];
 				}
 				echo '<ul class="cd-navigation cd-single-item-wrapper">
 				<li><a href="#0">Configuración</a></li>

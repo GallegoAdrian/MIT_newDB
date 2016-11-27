@@ -1,8 +1,21 @@
 <?php
 session_start();
 if(!isset($_SESSION["username"])){
-  header("location:index.php");
+  header("location:../");
 }
+
+if($_SESSION["user_type"] == "profesor"){
+  header("location:../profesor/");
+}
+
+if($_SESSION["user_type"] == "alumno"){
+  header("location:../alumno/");
+}
+
+if($_SESSION["user_type"] == "secretaria"){
+  header("location:../secretaria/");
+}
+
 require('../functions.php');
 
 ?>
