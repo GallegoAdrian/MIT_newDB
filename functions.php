@@ -86,6 +86,12 @@ function getDatosPersona($username, $connect){
 	return $row['nombre'];
 }
 
+function getMenuSecretaria($connect){
+	$result = select($connect, '*', 'menusecretaria');
+	$row = mysqli_fetch_array($result);
+	return $row;
+}
+
 //SELECT: end
 
 //Desloguea al usuario
@@ -134,6 +140,7 @@ type:
 	//obtiene nombre y url de la tabla menu
 	$consulta = "SELECT nombre, url FROM menu WHERE tipo_usuario = '$type'";
 	$result = mysqli_query($connect, $consulta);
+
 			echo '<nav id="cd-lateral-nav">
 			<ul class="cd-navigation">
 			<div class="profile">
@@ -188,7 +195,20 @@ type:
 					}
 					echo '</ul></li>';
 				}else if($type == 4){
-					echo $_SERVER['REQUEST_URI'];
+					//echo $_SERVER['REQUEST_URI'];
+					$consulta = "SELECT nombre, url FROM menusecretaria";
+					$result = mysqli_query($connect, $consulta);
+
+					foreach ($result as $line) {
+						$url = $_SERVER['REQUEST_URI'];
+						$pos = strrpos($url, $line['url']);
+						if($pos !== false){
+							    echo '<li><a class="active" href="'.$line['url'].'">'.$line['nombre'].'</a></li>';
+							}else{
+								echo '<li><a href="'.$line['url'].'">'.$line['nombre'].'</a></li>';
+							}
+					}
+
 				}
 				echo '<ul class="cd-navigation cd-single-item-wrapper">
 				<li><a href="#0">Configuración</a></li>

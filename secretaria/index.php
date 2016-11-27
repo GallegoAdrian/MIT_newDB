@@ -53,7 +53,8 @@ require('../functions.php');
 	</div>
 	<?php
 	header ('Content-type: text/html; charset=utf-8');
-		getMenu(3, $connect);
+		$connect = connectDB();
+		getMenu(4, $connect);
 		footer();
 	?>
 </body>

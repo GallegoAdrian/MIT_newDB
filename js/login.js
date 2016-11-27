@@ -8,7 +8,6 @@
           method:"POST",
           data:{username:username, pass:pass},
           cache:"false",
-		  
           beforeSend:function() {
             $('#login').val("Conectando...");
           },
