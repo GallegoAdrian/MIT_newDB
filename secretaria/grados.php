@@ -34,6 +34,7 @@ require('../functions.php');
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
     
 	<!--JTABLES: start-->
+	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
@@ -47,7 +48,7 @@ require('../functions.php');
 	?>
 	<main id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Home</h1>
+			<h1 class="page-header">Tabla Grados</h1>
 			<div id="PeopleTableContainer"></div>
 		</section>
 	</main>
@@ -58,4 +59,63 @@ require('../functions.php');
 		footer();
 	?>
 </body>
+<script type="text/javascript">
+	$(document).ready(function () {
+		
+		$('#PeopleTableContainer').jtable({
+			title: 'Tabla de Alumnos',
+			paging: true,
+			pageSize: 2,
+			sorting: true,
+			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
+			defaultSorting: 'nombre ASC',
+			actions: {
+				listAction:   'actionsGrados.php?action=list',
+				updateAction: 'actionsGrados.php?action=update',
+				createAction: 'actionsGrados.php?action=create',
+				deleteAction: 'actionsGrados.php?action=delete'
+			},
+			fields: {
+				id_grado: {
+					key: true,
+					list: false
+				},
+				nombre: {
+					title: 'Nombre',
+					width: '20%',
+					edit: false
+				},
+				duracion: {
+					title: 'Duracion',
+					width: '20%',
+					edit: false
+				},
+				creditos: {
+					title: 'Creditos',
+					width: '20%',
+					edit: false
+				},
+				tipo_docencia: {
+					title: 'Tipo de Docencia',
+					width: '20%',
+					edit: false
+				},
+				nota_corte_pau: {
+					title: 'Nota de Corte',
+					width: '20%',
+					edit: false
+				},
+				precio_cre: {
+					title: 'Precio',
+					width: '20%',
+					edit: false
+				}
+			}
+		});
+
+		//Load person list from server
+		$('#PeopleTableContainer').jtable('load');
+
+		});
+</script>
 </html>

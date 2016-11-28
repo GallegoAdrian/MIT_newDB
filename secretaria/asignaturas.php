@@ -32,8 +32,8 @@ require('../functions.php');
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
-    
 	<!--JTABLES: start-->
+    <script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
@@ -45,12 +45,12 @@ require('../functions.php');
 	<?php 
 	getHeader('../');
 	?>
-	<main id="general" class="cd-main-content">
+	<div id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Home</h1>
+			<h1 class="page-header">Tabla Asignaturas</h1>
 			<div id="PeopleTableContainer"></div>
 		</section>
-	</main>
+	</div>
 	<?php
 	header ('Content-type: text/html; charset=utf-8');
 		$connect = connectDB();
@@ -58,4 +58,43 @@ require('../functions.php');
 		footer();
 	?>
 </body>
+<script type="text/javascript">
+	$(document).ready(function () {
+		
+		$('#PeopleTableContainer').jtable({
+			title: 'Tabla de Alumnos',
+			paging: true,
+			pageSize: 2,
+			sorting: true,
+			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
+			defaultSorting: 'descripcion ASC',
+			actions: {
+				listAction:   'actionsAsignaturas.php?action=list',
+				updateAction: 'actionsAsignaturas.php?action=update',
+				createAction: 'actionsAsignaturas.php?action=create',
+				deleteAction: 'actionsAsignaturas.php?action=delete'
+			},
+			fields: {
+				id_asignatura: {
+					key: true,
+					list: false
+				},
+				codigo: {
+					title: 'Codigo',
+					width: '20%',
+					edit: false
+				},
+				descripcion: {
+					title: 'Descripcion',
+					width: '20%',
+					edit: false
+				}
+			}
+		});
+
+		//Load person list from server
+		$('#PeopleTableContainer').jtable('load');
+
+		});
+</script>
 </html>

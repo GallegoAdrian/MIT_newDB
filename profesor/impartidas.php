@@ -36,9 +36,9 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
     
 	<!--JTABLES: start-->
+	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
-	<script src="../scripts/jquery-1.6.4.min.js"></script>
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
