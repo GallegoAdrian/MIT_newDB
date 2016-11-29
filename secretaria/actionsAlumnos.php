@@ -10,12 +10,17 @@ try
 
 	if($_GET["action"] == "list"){
 
-			$consulta =	"SELECT al.id_alumno,per.nombre, per.apellidos,per.telefono,al.direccion,per.dni,per.email, us.id_rol FROM usuario AS us, persona AS per, alumno AS al WHERE us.id_usuario = per.id_persona AND al.id_alumno = per.id_persona AND us.id_rol = '1'";
+			$consulta =	"SELECT al.id_alumno,per.nombre, per.apellidos, per.dni, al.direccion, per.telefono,per.email 
+			FROM usuario AS us, persona AS per, alumno AS al 
+			WHERE us.id_usuario = per.id_persona AND al.id_alumno = per.id_persona AND us.id_rol = '1'";
 
 			$result = mysqli_query($connect, $consulta);
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta = "SELECT al.id_alumno,per.nombre, per.apellidos,per.telefono,al.direccion,per.dni,per.email, us.id_rol FROM usuario AS us, persona AS per, alumno AS al WHERE us.id_usuario = per.id_persona AND al.id_alumno = per.id_persona AND us.id_rol = '1' ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
+			$consulta = "SELECT al.id_alumno,per.nombre, per.apellidos, per.dni, al.direccion, per.telefono,per.email 
+			FROM usuario AS us, persona AS per, alumno AS al 
+			WHERE us.id_usuario = per.id_persona AND al.id_alumno = per.id_persona AND us.id_rol = '1' 
+			ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
 
@@ -24,7 +29,7 @@ try
 			while($row = mysqli_fetch_array($result)){
 				$rows[] = $row;
 			}
-			
+
 			//imprimirlos
 			$jTableResult = array();
 			$jTableResult['Result'] = "OK";

@@ -9,13 +9,21 @@ try
 	$connect = connectDB();
 	if($_GET["action"] == "list"){
 
-			$consulta =	"SELECT pro.id_profesor,per.nombre,pro.categoria, pro.ingreso,per.dni,us.id_rol FROM usuario AS us, persona AS per, profesor AS pro WHERE us.id_usuario = per.id_persona AND per.id_persona = pro.id_profesor AND us.id_rol = '2'";
+			$consulta =	"SELECT pro.id_profesor,pro.ingreso,pro.categoria,
+			per.dni,per.nombre,per.apellidos,per.telefono,per.email,
+			us.id_rol,us.password,us.username,us.activo 
+			FROM usuario AS us, persona AS per, profesor AS pro
+			WHERE us.id_usuario = per.id_persona AND per.id_persona = pro.id_profesor AND us.id_rol = 2";
 
 			$result = mysqli_query($connect, $consulta);
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta = "SELECT pro.id_profesor,per.nombre,pro.categoria, pro.ingreso,per.dni,us.id_rol FROM usuario AS us, persona AS per, profesor AS pro WHERE us.id_usuario = per.id_persona AND per.id_persona = pro.id_profesor AND us.id_rol = '2'
-					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
+			$consulta =	"SELECT pro.id_profesor,pro.ingreso,pro.categoria,
+			per.dni,per.nombre,per.apellidos,per.telefono,per.email,
+			us.id_rol,us.password,us.username,us.activo 
+			FROM usuario AS us, persona AS per, profesor AS pro
+			WHERE us.id_usuario = per.id_persona AND per.id_persona = pro.id_profesor AND us.id_rol = 2
+			ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
 
@@ -35,12 +43,13 @@ try
 
 	}
 	else if($_GET["action"] == "update"){
-			//comprovar que materia existe
-			//comprovar que el professor la imparte
 
-			$consulta = 'UPDATE matricula, asignatura SET matricula.nota = "'.$_POST['nota'].'" 
-						 WHERE matricula.id_asignatura = asignatura.id_asignatura 
-						 AND asignatura.codigo = "'.$_GET['materia'].'"';
+			//Hacer update de DNI - NOMBRE - CATEGORIA- INGRESO
+			$consulta = 'UPDATE usuario AS us,persona AS per,profesor AS pro
+			SET per.dni = "'.$_POST['dni'].'", per.nombre = "'.$_POST['nombre'].'", 
+			pro.categoria = "'.$_POST['categoria'].'",pro.ingreso = "'.$_POST['ingreso'].'"
+			WHERE us.id_usuario = per.id_persona AND per.id_persona = pro.id_profesor AND us.id_rol = 2
+			AND pro.id_profesor = "'.$_POST['id_profesor'].'"';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos
@@ -49,6 +58,8 @@ try
 			print json_encode($jTableResult);
 			mysqli_close($connect);
 	}
+
+
 
 
 }

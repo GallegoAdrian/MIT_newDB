@@ -23,7 +23,7 @@ require('../functions.php');
 	<!--JTABLES: start-->
 	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
@@ -56,6 +56,10 @@ require('../functions.php');
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
+			selecting: true, //Enable selecting
+            multiselect: true, //Allow multiple selecting
+            selectingCheckboxes: true, //Show checkboxes on first column
+            //selectOnRowClick: false, //Enable this to only select using checkboxes
 			actions: {
 				listAction:   'actionsAlumnos.php?action=list',
 				updateAction: 'actionsAlumnos.php?action=update',
@@ -70,37 +74,32 @@ require('../functions.php');
 				nombre: {
 					title: 'Nombre',
 					width: '20%',
-					edit: false
+					edit: true
 				},
 				apellidos: {
 					title: 'Apellidos',
 					width: '20%',
-					edit: false
+					edit: true
 				},
-				telefono: {
-					title: 'Telefono',
-					width: '20%',
-					edit: false
+				dni: {
+					title: 'DNI',
+					width: '8%',
+					edit: true
 				},
 				direccion: {
 					title: 'Direccion',
 					width: '20%',
-					edit: false
+					edit: true
 				},
-				dni: {
-					title: 'dni',
-					width: '20%',
-					edit: false
+				telefono: {
+					title: 'Teléfono',
+					width: '9%',
+					edit: true
 				},
 				email: {
-					title: 'Correo',
-					width: '20%',
-					edit: false
-				},
-				id_rol: {
-					title: 'Rol',
-					width: '20%',
-					edit: false
+					title: 'e-mail',
+					width: '15%',
+					edit: true
 				}
 			}
 		});

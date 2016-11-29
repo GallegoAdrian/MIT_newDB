@@ -36,7 +36,8 @@ require('../functions.php');
 	<!--JTABLES: start-->
 	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<link href="../scripts/jtable/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<!--link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" /-->
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
@@ -80,31 +81,66 @@ require('../functions.php');
 					key: true,
 					list: false
 				},
-				nombre: {
-					title: 'Nombre',
+				ingreso: {
+					title: 'Ingreso',
 					width: '20%',
-					edit: false
+					type:'date',
+					edit: true,
+					create:true
 				},
 				categoria: {
 					title: 'Categoria',
 					width: '20%',
-					edit: false
-				},
-				ingreso: {
-					title: 'Fecha Ingreso',
-					width: '20%',
-					type:'date',
-					edit: false
+					edit: true,
+					create:true
 				},
 				dni: {
-					title: 'dni',
+					title: 'DNI',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
+				nombre: {
+					title: 'Nombre',
+					width: '20%',
+					edit: true,
+					create:true
+				},
+				apellidos: {
+					title: 'Apellidos',
+					width: '20%',
+					edit: false,
+					create:true
+				},
+				telefono: {
+					title: 'Telefono',
+					width: '20%',
+					edit: false,
+					create:true
+				},
+				email: {
+					title: 'email',
+					width: '20%',
+					edit: false,
+					create:true
+				},								
 				id_rol: {
 					title: 'Rol',
 					width: '20%',
-					edit: false
+					edit: false,
+					create:true
+				},
+				username: {
+					title: 'Username',
+					width: '20%',
+					edit: false,
+					create:true
+				},
+				activo: {
+					title: 'Activo',
+					width: '20%',
+					edit: false,
+					create:true
 				}
 			}
 		});
