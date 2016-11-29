@@ -79,29 +79,80 @@ require('../functions.php');
 					key: true,
 					list: false
 				},
+				id_rol: {
+					title: 'Rol',
+					width: '20%',
+					edit: false,
+					create:false,
+					list: false
+				},
+				password: {
+					title: 'Password',
+					width: '20%',
+					list: false,
+					edit: false,
+					create:true
+				},
+				username: {
+					title: 'Usuario',
+					width: '20%',
+					edit: false,
+					create:true,
+					list:false
+				},
 				nombre: {
 					title: 'Nombre',
 					width: '20%',
 					edit: true,
 					create:true
 				},
-				dpto: {
-					title: 'Departamento',
+				apellidos: {
+					title: 'Apellidos',
 					width: '20%',
-					edit: true,
-					create:true
-				},
-				id_asignatura: {
-					title: 'id_asignatura',
-					width: '20%',
-					edit: true,
-					create:true
+					edit: false,
+					create:true,
+					list:false
 				},
 				dni: {
 					title: 'dni',
 					width: '20%',
 					edit: true,
 					create:true
+				},
+				activo: {
+					title: 'Activo',
+					width: '20%',
+					edit: false,
+					create:false,
+					list:false
+				},
+				telefono: {
+					title: 'Telefono',
+					width: '20%',
+					edit: false,
+					create:true,
+					list:false
+				},
+				email: {
+					title: 'Email',
+					width: '20%',
+					edit: false,
+					create:true,
+					list:false
+				},
+				dpto: {
+					title: 'Dpto',
+					width: '20%',
+					edit: true,
+					create:true
+				},
+				id_asignatura: {
+					title: 'Codigo',
+					width: '20%',
+					list:true,
+					edit: true,
+					create:true,
+					options: { '1': 'DGBD', '2': 'FBD','3': 'FP', '4': 'HI', '5': 'PC' }
 				}
 			}
 		});
