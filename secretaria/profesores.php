@@ -81,31 +81,66 @@ require('../functions.php');
 					key: true,
 					list: false
 				},
-				nombre: {
-					title: 'Nombre',
+				ingreso: {
+					title: 'Ingreso',
 					width: '20%',
-					edit: false
+					type:'date',
+					edit: true,
+					create:true
 				},
 				categoria: {
 					title: 'Categoria',
 					width: '20%',
-					edit: false
-				},
-				ingreso: {
-					title: 'Fecha Ingreso',
-					width: '20%',
-					type:'date',
-					edit: false
+					edit: true,
+					create:true
 				},
 				dni: {
-					title: 'dni',
+					title: 'DNI',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
+				nombre: {
+					title: 'Nombre',
+					width: '20%',
+					edit: true,
+					create:true
+				},
+				apellidos: {
+					title: 'Apellidos',
+					width: '20%',
+					edit: false,
+					create:true
+				},
+				telefono: {
+					title: 'Telefono',
+					width: '20%',
+					edit: false,
+					create:true
+				},
+				email: {
+					title: 'email',
+					width: '20%',
+					edit: false,
+					create:true
+				},								
 				id_rol: {
 					title: 'Rol',
 					width: '20%',
-					edit: false
+					edit: false,
+					create:true
+				},
+				username: {
+					title: 'Username',
+					width: '20%',
+					edit: false,
+					create:true
+				},
+				activo: {
+					title: 'Activo',
+					width: '20%',
+					edit: false,
+					create:true
 				}
 			}
 		});
