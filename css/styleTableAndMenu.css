@@ -44,7 +44,7 @@
 #menu li{
     float: left;
     width: 100%;
-    /*border-bottom: 1px solid #01342D;*/
+    border-bottom: 1px solid #01342D;
     text-transform: uppercase;
 }
 
@@ -77,12 +77,18 @@
   color: #e74e45;
 }
 
+input[type="checkbox"]{
+  width: 40px;
+}
+
 .jtable-title{
   display: none;
 }
 
-
-/*** Table Styles **/
+/*** Table Styles */
+/*.jtable-title{
+  display: none;
+}
 
 .jtable {
   border-radius:3px;
@@ -191,7 +197,7 @@ td.text-right {
         left: 0;
     }
 }
-
+*/
 
 
 /*
@@ -213,4 +219,4 @@ HEADER & FOOTER:
 
 
 
-*/
+*/*/
