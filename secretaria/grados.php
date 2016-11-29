@@ -71,8 +71,8 @@ require('../functions.php');
 			defaultSorting: 'nombre ASC',
 			actions: {
 				listAction:   'actionsGrados.php?action=list',
-				updateAction: 'actionsGrados.php?action=update',
 				createAction: 'actionsGrados.php?action=create',
+				updateAction: 'actionsGrados.php?action=update',
 				deleteAction: 'actionsGrados.php?action=delete'
 			},
 			fields: {
@@ -83,32 +83,38 @@ require('../functions.php');
 				nombre: {
 					title: 'Nombre',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				duracion: {
 					title: 'Duracion',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				creditos: {
 					title: 'Creditos',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				tipo_docencia: {
 					title: 'Tipo de Docencia',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				nota_corte_pau: {
 					title: 'Nota de Corte',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				precio_cre: {
 					title: 'Precio',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				}
 			}
 		});

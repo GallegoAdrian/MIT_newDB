@@ -34,19 +34,43 @@ try
 			print json_encode($jTableResult);
 			mysqli_close($connect);
 
-	}
-	else if($_GET["action"] == "update"){
-			//comprovar que materia existe
-			//comprovar que el professor la imparte
+	}else if($_GET["action"] == "update"){
 
-			$consulta = 'UPDATE matricula, asignatura SET matricula.nota = "'.$_POST['nota'].'" 
-						 WHERE matricula.id_asignatura = asignatura.id_asignatura 
-						 AND asignatura.codigo = "'.$_GET['materia'].'"';
+			$consulta = 'UPDATE asignatura 
+						 SET id_asignatura = "'.$_POST['id_asignatura'].'", codigo = "'.$_POST['codigo'].'" , descripcion = "'.$_POST['descripcion'].'"
+						WHERE id_asignatura = "'.$_POST['id_asignatura'].'"';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos
 			$jTableResult = array();
 			$jTableResult['Result'] = "OK";
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+
+	}else if($_GET["action"] == "delete"){
+
+		    $consulta = 'DELETE FROM asignatura WHERE id_asignatura = "'.$_POST['id_asignatura'].'"';
+
+			$result = mysqli_query($connect, $consulta);
+			//imprimirlos
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+
+	}else if($_GET["action"] == "create"){
+
+		    $consulta = "INSERT INTO asignatura(codigo, descripcion) 
+						 VALUES('" . $_POST["codigo"] . "', '" . $_POST["descripcion"] . "');";
+
+			$result = mysqli_query($connect, $consulta);
+
+			$result = mysqli_query($connect, "SELECT * FROM asignatura WHERE id_asignatura = LAST_INSERT_ID();");
+			$row = mysqli_fetch_array($result);
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			$jTableResult['Record'] = $row;
 			print json_encode($jTableResult);
 			mysqli_close($connect);
 	}

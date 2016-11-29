@@ -77,17 +77,20 @@ require('../functions.php');
 			fields: {
 				id_asignatura: {
 					key: true,
-					list: false
+					list: false,
+					create:true
 				},
 				codigo: {
 					title: 'Codigo',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				descripcion: {
 					title: 'Descripcion',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				}
 			}
 		});

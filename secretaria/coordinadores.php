@@ -82,27 +82,26 @@ require('../functions.php');
 				nombre: {
 					title: 'Nombre',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				dpto: {
 					title: 'Departamento',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
-				descripcion: {
-					title: 'Asignatura',
+				id_asignatura: {
+					title: 'id_asignatura',
 					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				},
 				dni: {
 					title: 'dni',
 					width: '20%',
-					edit: false
-				},
-				id_rol: {
-					title: 'Rol',
-					width: '20%',
-					edit: false
+					edit: true,
+					create:true
 				}
 			}
 		});
