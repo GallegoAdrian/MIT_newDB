@@ -6,15 +6,15 @@ $select = "SELECT * FROM persona";
 
 $export = mysqli_query($connect, $select);
 
-$fields = mysql_num_fields ( $export );
+$fields = mysqli_num_fields ( $export );
 
 for ( $i = 0; $i < $fields; $i++ )
 {
-    $header .=  mysqli_fetch_field_direct( $export , $i ) . "\t";
-    
+    $header .=  mysqli_fetch_field_direct( $export , $i )->name . "\t"; 
+
 }
 
-while( $row = mysqli_fetch_row( $export ) )
+while( $row = mysqli_fetch_field_direct( $export ) )
 {
     $line = '';
     foreach( $row as $value )
@@ -36,13 +36,13 @@ $data = str_replace( "\r" , "" , $data );
 
 if ( $data == "" )
 {
-    $data = "\n(0) Records Found!\n";                        
+    $data = "\n(0) Records Found!\n";
 }
 
-header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=your_desired_name.csv");
-header("Pragma: no-cache");
-header("Expires: 0");
-print "$header\n$data";
+// header("Content-type: application/octet-stream");
+// header("Content-Disposition: attachment; filename=your_desired_name.csv");
+// header("Pragma: no-cache");
+// header("Expires: 0");
+// print "$header\n$data";
 mysqli_close($connect);
 ?>
