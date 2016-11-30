@@ -58,10 +58,51 @@ try
 			print json_encode($jTableResult);
 			mysqli_close($connect);
 	}
+	else if($_GET["action"] == "create"){
 
 
+			$consulta = "INSERT INTO usuario(password, username, activo, id_rol) 
+						 VALUES('" . $_POST["password"] . "','" . $_POST["username"] . "','1','2');";
+			
+			$result = mysqli_query($connect, $consulta);
+
+			$consulta = "INSERT INTO persona(nombre, apellidos, dni, telefono, email) 
+						 VALUES('" . $_POST["nombre"] . "', '" . $_POST["apellidos"] . "', '" . $_POST["dni"] . "', '" . $_POST["telefono"] . "','" . $_POST["email"] . "');";
+
+			$result = mysqli_query($connect, $consulta);
+
+			$result = mysqli_query($connect, "SELECT * FROM persona WHERE dni = '" . $_POST["dni"] . "'");
+			$row = mysqli_fetch_array($result);
+
+			$consulta = "INSERT INTO profesor(id_profesor,ingreso,categoria) 
+						 VALUES('" . $row['id_persona'] . "','" . $_POST["ingreso"] . "', '" . $_POST["categoria"] . "');";
+
+			$result2 = mysqli_query($connect, $consulta);
+
+			$result = mysqli_query($connect, "SELECT * FROM profesor WHERE id_profesor = LAST_INSERT_ID();");
 
 
+			$row = mysqli_fetch_array($result);
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			$jTableResult['Record'] = $row;
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+	}
+	else if($_GET["action"] == "delete"){
+
+				$consulta = 'DELETE pro,us,per 
+							 FROM profesor AS pro, usuario AS us, persona AS per 
+							 WHERE pro.id_profesor = "'.$_POST['id_profesor'].'" AND per.id_persona = "'.$_POST['id_profesor'].'" AND us.id_usuario = "'.$_POST['id_profesor'].'"';
+
+				$result = mysqli_query($connect, $consulta);
+				//imprimirlos
+				$jTableResult = array();
+				$jTableResult['Result'] = "OK";
+				print json_encode($jTableResult);
+				mysqli_close($connect);
+		}
 }
 catch(Exception $ex)
 {

@@ -128,7 +128,8 @@ require('../functions.php');
 					title: 'Rol',
 					width: '20%',
 					edit: false,
-					create:true
+					create:false,
+					list:false
 				},
 				username: {
 					title: 'Username',
@@ -140,7 +141,15 @@ require('../functions.php');
 					title: 'Activo',
 					width: '20%',
 					edit: false,
-					create:true
+					create: false,
+					list:false
+				},
+				password: {
+					title: 'password',
+					width: '20%',
+					edit: false,
+					create: true,
+					list:false
 				}
 			}
 		});
