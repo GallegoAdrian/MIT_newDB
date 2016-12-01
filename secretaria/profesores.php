@@ -123,7 +123,7 @@ require('../functions.php');
 					width: '20%',
 					edit: false,
 					create:true
-				},								
+				},
 				id_rol: {
 					title: 'Rol',
 					width: '20%',
@@ -150,7 +150,67 @@ require('../functions.php');
 					edit: false,
 					create: true,
 					list:false
-				}
+				},
+				asignatura: {
+					title: '',
+					width: '3%',
+					sorting: false,
+					edit: false,
+					create: false,
+					display: function (staffData) {
+					//Create an image that will be used to open child table
+							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
+							//Open child table when user clicks the image
+							$img.click(function () {
+									$('#PeopleTableContainer').jtable('openChildTable',
+									$img.closest('tr'),
+									{
+										title: 'Asignaturas '+staffData.record.nombre+' '+staffData.record.apellidos,
+										sorting: true,
+										defaultSorting: 'codigo ASC',
+										paging: true,
+										pageSize: 3,
+										actions: {
+											listAction: 'actionsUnProfesor.php?action=list&profesorid=' + staffData.record.id_profesor,
+											// deleteAction: '/accionescursos.php?action=delete&PersonaID=' + staffData.record.PersonaID,
+											// updateAction: '/accionescursos.php?action=update&PersonaID=' + staffData.record.PersonaID,
+											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,
+											},
+										fields: {
+											id_profesor: {
+												key: true,
+												create: false,
+												edit: false,
+												list: false
+											},
+											id_asignatura: {
+												title: 'Asignatura',
+												width: '50%',
+												list:true,
+												edit: true,
+												create:true,
+												options: { '1': 'DISEÑO Y GESTION DE BASES DE DATOS', 
+														   '2': 'FUNDAMENTOS DE LAS BASES DE DATOS',
+														   '3': 'FUNDAMENTOS DE LA PROGRAMACION', 
+														   '4': 'HISTORIA DE LA INFORMATICA', 
+														   '5': 'PROGRAMACION CONCURRENTE' }
+											},
+											codigo: {
+												title: 'Codigo',
+												width: '50%',
+												list:true,
+												edit: false,
+												create:false
+											}
+										}
+									}, function (data) { //opened handler
+									data.childTable.jtable('load');
+								});
+							});
+							//Return image to show on the person row
+							return $img;
+						}
+					},
 			}
 		});
 
