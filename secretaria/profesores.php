@@ -171,7 +171,7 @@ require('../functions.php');
 										paging: true,
 										pageSize: 3,
 										actions: {
-											listAction: 'actionsUnProfesor.php?action=list&profesorid=' + staffData.record.id_profesor,
+											listAction: 'actionsUnGrado.php?action=list&profesorid=' + staffData.record.id_profesor,
 											// deleteAction: '/accionescursos.php?action=delete&PersonaID=' + staffData.record.PersonaID,
 											// updateAction: '/accionescursos.php?action=update&PersonaID=' + staffData.record.PersonaID,
 											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,

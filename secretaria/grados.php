@@ -115,7 +115,69 @@ require('../functions.php');
 					width: '20%',
 					edit: true,
 					create:true
-				}
+				},
+				alumnos: {
+					title: '',
+					width: '3%',
+					sorting: false,
+					edit: false,
+					create: false,
+					display: function (staffData) {
+					//Create an image that will be used to open child table
+							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
+							//Open child table when user clicks the image
+							$img.click(function () {
+									$('#PeopleTableContainer').jtable('openChildTable',
+									$img.closest('tr'),
+									{
+										title: 'Grados '+staffData.record.nombre,
+										sorting: true,
+										defaultSorting: 'nombre ASC',
+										paging: true,
+										pageSize: 3,
+										actions: {
+											listAction: 'actionsUnGrado.php?action=list&gradoid=' + staffData.record.id_grado,
+											// deleteAction: '/accionescursos.php?action=delete&PersonaID=' + staffData.record.PersonaID,
+											// updateAction: '/accionescursos.php?action=update&PersonaID=' + staffData.record.PersonaID,
+											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,
+											},
+										fields: {
+											id_grado: {
+												key: true,
+												create: false,
+												edit: false,
+												list: false
+											},
+											nombre: {
+												title: 'Nombre',
+												width: '33%',
+												list:true,
+												edit: true,
+												create:true
+											},
+											curso_esc: {
+												title: 'Curso',
+												width: '33%',
+												list:true,
+												edit: false,
+												create:false
+											},
+											baixa: {
+												title: 'Baixa',
+												width: '33%',
+												list:true,
+												edit: false,
+												create:false
+											}
+										}
+									}, function (data) { //opened handler
+									data.childTable.jtable('load');
+								});
+							});
+							//Return image to show on the person row
+							return $img;
+						}
+					},
 			}
 		});
 
