@@ -37,13 +37,12 @@ try
 
 	}
 	else if($_GET["action"] == "update"){
-		if (isset($_GET['materia'])) {
+		
 			//comprovar que materia existe
 			//comprovar que el professor la imparte
 
-			$consulta = 'UPDATE matricula, asignatura SET matricula.nota = "'.$_POST['nota'].'" 
-						 WHERE matricula.id_asignatura = asignatura.id_asignatura 
-						 AND asignatura.codigo = "'.$_GET['materia'].'"';
+			$consulta = "UPDATE imparte AS im SET im.id_asignatura = '".$_POST['id_asignatura']."'
+					     WHERE im.id_profesor = " . $_GET["profesorid"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos
@@ -51,7 +50,6 @@ try
 			$jTableResult['Result'] = "OK";
 			print json_encode($jTableResult);
 			mysqli_close($connect);
-		}
 	}
 
 

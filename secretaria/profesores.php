@@ -171,9 +171,9 @@ require('../functions.php');
 										paging: true,
 										pageSize: 3,
 										actions: {
-											listAction: 'actionsUnGrado.php?action=list&profesorid=' + staffData.record.id_profesor,
+											listAction: 'actionsUnProfesor.php?action=list&profesorid=' + staffData.record.id_profesor,
 											// deleteAction: '/accionescursos.php?action=delete&PersonaID=' + staffData.record.PersonaID,
-											// updateAction: '/accionescursos.php?action=update&PersonaID=' + staffData.record.PersonaID,
+											updateAction: 'actionsUnProfesor.php?action=update&profesorid=' + staffData.record.id_profesor,
 											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,
 											},
 										fields: {
@@ -185,7 +185,7 @@ require('../functions.php');
 											},
 											id_asignatura: {
 												title: 'Asignatura',
-												width: '50%',
+												width: '100%',
 												list:true,
 												edit: true,
 												create:true,
@@ -197,7 +197,8 @@ require('../functions.php');
 											},
 											codigo: {
 												title: 'Codigo',
-												width: '50%',
+												width: '0%',
+												visibility:'hidden',
 												list:true,
 												edit: false,
 												create:false
