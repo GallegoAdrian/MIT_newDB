@@ -123,6 +123,7 @@ require('../functions.php');
 					edit: false,
 					create: false,
 					display: function (staffData) {
+
 					//Create an image that will be used to open child table
 							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
 							//Open child table when user clicks the image
@@ -138,7 +139,7 @@ require('../functions.php');
 										actions: {
 											listAction: 'actionsUnGrado.php?action=list&gradoid=' + staffData.record.id_grado,
 											// deleteAction: '/accionescursos.php?action=delete&PersonaID=' + staffData.record.PersonaID,
-											// updateAction: '/accionescursos.php?action=update&PersonaID=' + staffData.record.PersonaID,
+											updateAction: 'actionsUnGrado.php?action=update&gradoid=' + staffData.record.id_grado,
 											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,
 											},
 										fields: {
@@ -153,20 +154,20 @@ require('../functions.php');
 												width: '33%',
 												list:true,
 												edit: true,
-												create:true
+												create:false
 											},
 											curso_esc: {
 												title: 'Curso',
 												width: '33%',
 												list:true,
-												edit: false,
+												edit: true,
 												create:false
 											},
 											baixa: {
 												title: 'Baixa',
 												width: '33%',
 												list:true,
-												edit: false,
+												edit: true,
 												create:false
 											}
 										}
