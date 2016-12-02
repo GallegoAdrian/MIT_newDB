@@ -62,7 +62,7 @@ require('../functions.php');
 	$(document).ready(function () {
 		
 		$('#PeopleTableContainer').jtable({
-			title: 'Tabla de Alumnos',
+			//title: 'Tabla de Alumnos',
 			paging: true,
 			pageSize: 2,
 			sorting: true,
