@@ -63,7 +63,7 @@ require('../functions.php');
 	$(document).ready(function () {
 		
 		$('#PeopleTableContainer').jtable({
-			title: 'Tabla de Alumnos',
+			//title: 'Tabla de Alumnos',
 			paging: true,
 			pageSize: 2,
 			sorting: true,
@@ -115,7 +115,77 @@ require('../functions.php');
 					width: '20%',
 					edit: true,
 					create:true
-				}
+				},
+				alumnos: {
+					title: '',
+					width: '3%',
+					sorting: false,
+					edit: false,
+					create: false,
+					display: function (staffData) {
+
+					//Create an image that will be used to open child table
+							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
+							//Open child table when user clicks the image
+							$img.click(function () {
+									$('#PeopleTableContainer').jtable('openChildTable',
+									$img.closest('tr'),
+									{
+										title: 'Grados '+staffData.record.nombre,
+										sorting: true,
+										defaultSorting: 'nombre ASC',
+										paging: true,
+										pageSize: 3,
+										actions: {
+											listAction: 'actionsUnGrado.php?action=list&gradoid=' + staffData.record.id_grado,
+											deleteAction: 'actionsUnGrado.php?action=delete&gradoid=' + staffData.record.id_grado,
+											updateAction: 'actionsUnGrado.php?action=update&gradoid=' + staffData.record.id_grado,
+											createAction: 'actionsUnGrado.php?action=create&gradoid=' + staffData.record.id_grado,
+											},
+										fields: {
+											id_grado: {
+												defaultValue:staffData.record.id_grado,
+												list:false,
+												edit: false,
+												create:false
+											},
+											id_alumno:{
+												key: true,
+												options: 'actionsUnGrado.php?action=getAlumnoId',
+												list:false,
+												edit: true,
+												create:true
+											},
+											nombre: {
+												title: 'Nombre',
+												width: '33%',
+												list:true,
+												edit: true,
+												create:false
+											},
+											curso_esc: {
+												title: 'Curso',
+												width: '33%',
+												list:true,
+												edit: true,
+												create:false
+											},
+											baixa: {
+												title: 'Baixa',
+												width: '33%',
+												list:true,
+												edit: true,
+												create:false
+											}
+										}
+									}, function (data) { //opened handler
+									data.childTable.jtable('load');
+								});
+							});
+							//Return image to show on the person row
+							return $img;
+						}
+					},
 			}
 		});
 
@@ -123,5 +193,6 @@ require('../functions.php');
 		$('#PeopleTableContainer').jtable('load');
 
 		});
+
 </script>
 </html>

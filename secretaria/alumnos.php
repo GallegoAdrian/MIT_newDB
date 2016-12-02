@@ -52,7 +52,7 @@ require('../functions.php');
 	$(document).ready(function () {
 		
 		$('#PeopleTableContainer').jtable({
-			title: 'Tabla de Alumnos',
+			//title: 'Tabla de Alumnos',
 			paging: true,
 			pageSize: 5,
 			sorting: true,
@@ -68,40 +68,78 @@ require('../functions.php');
 				createAction: 'actionsAlumnos.php?action=create',
 				deleteAction: 'actionsAlumnos.php?action=delete'
 			},
-			fields: {
+						fields: {
 				id_alumno: {
 					key: true,
 					list: false
 				},
 				nombre: {
 					title: 'Nombre',
-					width: '20%',
-					edit: true
+					width: '15%',
+					edit: true,
+					create: true
 				},
 				apellidos: {
 					title: 'Apellidos',
 					width: '20%',
-					edit: true
+					edit: true,
+					create:true
 				},
 				dni: {
 					title: 'DNI',
-					width: '8%',
-					edit: true
-				},
-				direccion: {
-					title: 'Direccion',
-					width: '20%',
-					edit: true
+					width: '5%',
+					edit: true,
+					create: true
 				},
 				telefono: {
 					title: 'Teléfono',
-					width: '9%',
-					edit: true
+					width: '5%',
+					edit: true,
+					create: true
 				},
 				email: {
 					title: 'e-mail',
 					width: '15%',
-					edit: true
+					edit: true,
+					create: true,
+					inputClass: 'validate[required,custom[email]]'
+				},
+				direccion: {
+					title: 'Direccion',
+					width: '15%',
+					edit: true,
+					create: true
+				},
+				id_rol: {
+					title: 'Rol',
+					width: '5%',
+					edit: false,
+					create:false,
+					list:false
+				},
+				username: {
+					title: 'Usuario',
+					//width: '7%',
+					edit: true,
+					create: true,
+					list: false
+				},
+				password: {
+					title: 'Password',
+					//width: '9%',
+					edit: true,
+					create: true,
+					list: false
+				},
+				activo: {
+					title: 'Activo',
+					//width: '2%',
+					edit: true,
+					create: true,
+					list: false,
+					type: 'checkbox',
+                    values: { '0': 'NO', '1': 'SI' },
+                    defaultValue: '1'
 				}
 			},
 			selectionChanged: function () {

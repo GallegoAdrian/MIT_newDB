@@ -35,7 +35,7 @@ require('../functions.php');
 	<!--JTABLES: start-->
 	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
@@ -62,12 +62,16 @@ require('../functions.php');
 	$(document).ready(function () {
 		
 		$('#PeopleTableContainer').jtable({
-			title: 'Tabla de Profesores',
+			//title: 'Tabla de Profesores',
 			paging: true,
 			pageSize: 3,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
+			selecting: true, //Enable selecting
+            multiselect: false, //Allow multiple selecting
+            selectingCheckboxes: false, //Show checkboxes on first column
+            //selectOnRowClick: false, //Enable this to only select using checkboxes
 			actions: {
 				listAction:   'actionsCoordinadores.php?action=list',
 				updateAction: 'actionsCoordinadores.php?action=update',
@@ -81,27 +85,82 @@ require('../functions.php');
 				},
 				nombre: {
 					title: 'Nombre',
-					width: '20%',
+					width: '15%',
 					edit: true,
 					create:true
 				},
-				dpto: {
-					title: 'Departamento',
+				apellidos: {
+					title: 'Apellidos',
 					width: '20%',
+					edit: false,
+					create:true,
+					list:true
+				},
+				dni: {
+					title: 'DNI',
+					width: '5%',
+					edit: true,
+					create:true
+				},
+				telefono: {
+					title: 'Teléfono',
+					width: '5%',
+					edit: false,
+					create:true,
+					list:false
+				},
+				email: {
+					title: 'e-mail',
+					width: '15%',
+					edit: false,
+					create:true,
+					list:false,
+					inputClass: 'validate[required,custom[email]]'
+				},
+				dpto: {
+					title: 'Dpto',
+					width: '5%',
 					edit: true,
 					create:true
 				},
 				id_asignatura: {
-					title: 'id_asignatura',
-					width: '20%',
+					title: 'Codigo',
+					width: '5%',
+					list:true,
 					edit: true,
+					create:true,
+					options: { '1': 'DGBD', '2': 'FBD','3': 'FP', '4': 'HI', '5': 'PC' }
+				},
+				id_rol: {
+					title: 'Rol',
+					width: '20%',
+					edit: false,
+					create:false,
+					list: false
+				},
+				username: {
+					title: 'Usuario',
+					width: '20%',
+					edit: false,
+					create:true,
+					list:false
+				},
+				password: {
+					title: 'Password',
+					width: '20%',
+					list: false,
+					edit: false,
 					create:true
 				},
-				dni: {
-					title: 'dni',
+				activo: {
+					title: 'Activo',
 					width: '20%',
-					edit: true,
-					create:true
+					edit: false,
+					create: true,
+					list: false,
+					type: 'checkbox',
+                    values: { '0': 'NO', '1': 'SI' },
+                    defaultValue: '1'
 				}
 			}
 		});

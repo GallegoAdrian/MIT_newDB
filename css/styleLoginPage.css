@@ -121,6 +121,14 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 	padding-top:64px;
 }
 
+.child-opener-image{
+	cursor:pointer;
+}
+
+.child-opener-image-column{
+	text-align: center;
+}
+
 @media screen and (min-width: 600px){
   #title{
 	font-weight: 700;
