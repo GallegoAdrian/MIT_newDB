@@ -66,6 +66,43 @@ try
 			print json_encode($jTableResult);
 			mysqli_close($connect);
 	}
+	else if($_GET["action"] == "create"){
+
+			$consulta = "INSERT INTO grados_alumnos(id_alumno,id_grado,curso_esc ,baixa) 
+						 VALUES('" . $_POST["id_alumno"] . "','" . $_GET["gradoid"] . "','16-17','0' );";
+
+			$result = mysqli_query($connect, $consulta);
+
+			$result = mysqli_query($connect, "SELECT * FROM grados_alumnos WHERE id_grd_alu  = LAST_INSERT_ID();");
+			$row = mysqli_fetch_array($result);
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			$jTableResult['Record'] = $row;
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+	}
+	else if($_GET["action"] == "getAlumnoId"){
+
+			$consulta = "SELECT alu.id_alumno, per.nombre FROM persona AS per,alumno AS alu WHERE alu.id_alumno = per.id_persona";
+
+			$result = mysqli_query($connect, $consulta);
+
+			$rows = array();
+
+			while($row = mysqli_fetch_array($result)){
+				$arr = array();
+				$arr['DisplayText'] = $row['nombre'];
+				$arr['Value'] = $row['id_alumno'];
+				$rows[] = $arr;
+			}
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			$jTableResult['Options'] = $rows;
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+	}
 
 }
 catch(Exception $ex)
