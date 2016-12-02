@@ -181,13 +181,13 @@ require('../functions.php');
 											},
 										fields: {
 											id_imparte: {
-												key: true,
 												create: false,
 												edit: false,
 												list: false,
 											},
 											id_profesor: {
 												defaultValue:staffData.record.id_profesor,
+												key: true,
 												create: false,
 												edit: false,
 												list: false,

@@ -65,14 +65,12 @@ try
 
 	}else if($_GET["action"] == "create"){
 
-			//$consulta = "INSERT INTO imparte(id_asignatura, id_profesor) VALUES('" . $_POST['id_asignatura'] . "','" . $_GET["profesorid"] . "');";
+			$consulta = "INSERT INTO imparte(id_asignatura,id_profesor) 
+						 VALUES('" . $_POST["id_asignatura"] . "','" . $_GET["profesorid"] . "' );";
 
-			$consulta = "INSERT INTO grados(id_asignatura, id_profesor) 
-						 VALUES('" . $_POST["id_asignatura"] . "', '" . $_GET["profesorid"] . "' );";
+			$result = mysqli_query($connect, $consulta);
 
-			$result = mysqli_query($connect, "SELECT * FROM imparte WHERE id_imparte = LAST_INSERT_ID();");
-
-
+			$result = mysqli_query($connect, "SELECT * FROM imparte WHERE id_imparte  = LAST_INSERT_ID();");
 			$row = mysqli_fetch_array($result);
 
 			$jTableResult = array();
