@@ -140,7 +140,7 @@ require('../functions.php');
 											listAction: 'actionsUnGrado.php?action=list&gradoid=' + staffData.record.id_grado,
 											deleteAction: 'actionsUnGrado.php?action=delete&gradoid=' + staffData.record.id_grado,
 											updateAction: 'actionsUnGrado.php?action=update&gradoid=' + staffData.record.id_grado,
-											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,
+											createAction: 'actionsUnGrado.php?action=create&gradoid=' + staffData.record.id_grado,
 											},
 										fields: {
 											id_grado: {
@@ -151,9 +151,10 @@ require('../functions.php');
 											},
 											id_alumno:{
 												key: true,
+												options: 'actionsUnGrado.php?action=getAlumnoId',
 												list:false,
-												edit: false,
-												create:false
+												edit: true,
+												create:true
 											},
 											nombre: {
 												title: 'Nombre',
@@ -192,5 +193,6 @@ require('../functions.php');
 		$('#PeopleTableContainer').jtable('load');
 
 		});
+
 </script>
 </html>
