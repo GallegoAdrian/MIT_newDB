@@ -10,13 +10,13 @@ try
 
 	if($_GET["action"] == "list"){
 
-			$consulta =	"SELECT pro.id_profesor, im.id_asignatura,asi.codigo FROM profesor AS pro, imparte AS im, asignatura AS asi WHERE pro.id_profesor = im.id_profesor AND im.id_asignatura = asi.id_asignatura AND pro.id_profesor = '{$_GET['profesorid']}'";
+			$consulta =	"SELECT im.id_imparte, pro.id_profesor, im.id_asignatura,asi.codigo FROM profesor AS pro, imparte AS im, asignatura AS asi WHERE pro.id_profesor = im.id_profesor AND im.id_asignatura = asi.id_asignatura AND pro.id_profesor = '{$_GET['profesorid']}'";
 
 			$result = mysqli_query($connect, $consulta);
 
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta = "SELECT pro.id_profesor, im.id_asignatura,asi.codigo FROM profesor AS pro, imparte AS im, asignatura AS asi WHERE pro.id_profesor = im.id_profesor AND im.id_asignatura = asi.id_asignatura AND pro.id_profesor = '{$_GET['profesorid']}'
+			$consulta = "SELECT im.id_imparte, pro.id_profesor, im.id_asignatura,asi.codigo FROM profesor AS pro, imparte AS im, asignatura AS asi WHERE pro.id_profesor = im.id_profesor AND im.id_asignatura = asi.id_asignatura AND pro.id_profesor = '{$_GET['profesorid']}'
 					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
@@ -62,6 +62,25 @@ try
 			$jTableResult['Result'] = "OK";
 			print json_encode($jTableResult);
 			mysqli_close($connect);
+
+	}else if($_GET["action"] == "create"){
+
+			//$consulta = "INSERT INTO imparte(id_asignatura, id_profesor) VALUES('" . $_POST['id_asignatura'] . "','" . $_GET["profesorid"] . "');";
+
+			$consulta = "INSERT INTO grados(id_asignatura, id_profesor) 
+						 VALUES('" . $_POST["id_asignatura"] . "', '" . $_GET["profesorid"] . "' );";
+
+			$result = mysqli_query($connect, "SELECT * FROM imparte WHERE id_imparte = LAST_INSERT_ID();");
+
+
+			$row = mysqli_fetch_array($result);
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			$jTableResult['Record'] = $row;
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+
 	}
 	else if($_GET["action"] == "getAssigId"){
 
