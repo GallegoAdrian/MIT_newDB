@@ -216,4 +216,105 @@ type:
 				</ul> <!-- cd-single-item-wrapper -->
 				</nav>';
 	}
+
+
+	/*
+	PDF: START
+	*/
+
+
+	function pdf($id, $method){
+		require('pdf/tfpdf.php');
+		class PDF extends tFPDF
+		{
+			// Cabecera de página
+			function Header()
+			{
+			    // Logo
+			    $this->Image('images/mit.png',10,8,33);
+			    // Arial bold 15
+			    $this->SetFont('Arial','B',15);
+			    // Movernos a la derecha
+			    $this->Cell(80);
+			    // Título
+			    $this->Cell(30,10,'Notas ',0,0,'C');
+			    // Salto de línea
+			    $this->Ln(20);
+			}
+
+			// Pie de página
+			function Footer()
+			{
+			    // Posición: a 1,5 cm del final
+			    $this->SetY(-15);
+			    // Arial italic 8
+			    $this->SetFont('Arial','I',8);
+			    // Número de página
+			    $this->Cell(0,10,'Page '.$this->PageNo().'/1',0,0,'C');
+			}
+			function ChapterTitle($num, $today)
+			{
+			    // Arial 12
+			    $this->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
+			    $this->SetFont('DejaVu','',14);
+			    // Color de fondo
+			    $this->SetFillColor(200,220,255);
+			    // Título
+			    $this->Cell(0,6,"$num",0,0,'L',true);
+			    $this->Cell(0,6," Creado: $today[mday] - $today[mon] - $today[year]",0,1,'R', false);
+			}
+		}
+		$conn = connectDB();
+		$result = getNotasAlumno($conn, $id);
+		$pdf = new PDF();
+		$pdf->AddPage();
+		// Add a Unicode font (uses UTF-8)
+		$today = getdate();
+		$return = getNombreId($conn, $id);
+		$pdf->ChapterTitle($return['nombre'].' '.$return['apellidos'], $today);
+		$pdf->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
+		$pdf->SetFont('DejaVu','',14);
+		
+		foreach ($result as $asignatura) {
+			$pdf->Cell(150,10,$asignatura['descripcion'],0,0);
+			$pdf->Cell(40,10,$asignatura['nota'],0,1,'R');
+		}
+		if ($method == 'download') {
+			# code...
+			$pdf->Output('notas.pdf', 'D');
+		}
+		else{
+			$pdfdoc = $pdf->Output('', 'S');
+			return $pdfdoc;
+		}
+	}
+
+	/*
+	PDF: END
+	*/
+
+	function getNotasAlumno($conn, $id){
+		$result = select($conn,
+			'descripcion, nota, baixa',
+			'asignatura a INNER JOIN matricula m ON a.id_asignatura = m.id_asignatura', 
+			'm.id_alumno = '.$id
+		);
+		return $result;
+
+	}
+	function getNombreId($conn, $id){
+		$result = select($conn,
+			'nombre, apellidos',
+			'alumno a INNER JOIN persona p ON a.id_alumno = p.id_persona', 
+			'a.id_alumno = '.$id.' LIMIT 1'
+		);
+		$row = mysqli_fetch_array($result);
+		return $row;
+	}
+	function getMail($conn, $dni){
+		$result = select($conn, 'id_persona as id, email, nombre, apellidos', 'persona', 'dni = "'.$dni.'" LIMIT 1');
+		$row = mysqli_fetch_array($result);
+
+		return $row; 
+	}
 ?>
