@@ -51,6 +51,39 @@ try
 			print json_encode($jTableResult);
 			mysqli_close($connect);
 	}
+	else if($_GET["action"] == "delete"){
+
+			// $_POST['id_asignatura']=3;
+			$consulta = 'DELETE FROM imparte WHERE imparte.id_asignatura = "'.$_POST['id_asignatura'].'" AND imparte.id_profesor = "'.$_GET['profesorid'].'"';
+
+			$result = mysqli_query($connect, $consulta);
+			//imprimirlos
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+	}
+	else if($_GET["action"] == "getAssigId"){
+
+			$consulta = "SELECT id_asignatura, descripcion FROM asignatura";
+
+			$result = mysqli_query($connect, $consulta);
+
+			$rows = array();
+
+			while($row = mysqli_fetch_array($result)){
+				$arr = array();
+				$arr['DisplayText'] = $row['descripcion'];
+				$arr['Value'] = $row['id_asignatura'];
+				$rows[] = $arr;
+			}
+
+			$jTableResult = array();
+			$jTableResult['Result'] = "OK";
+			$jTableResult['Options'] = $rows;
+			print json_encode($jTableResult);
+			mysqli_close($connect);
+	}
 
 
 }

@@ -158,6 +158,7 @@ require('../functions.php');
 					edit: false,
 					create: false,
 					display: function (staffData) {
+						console.log(staffData);
 					//Create an image that will be used to open child table
 							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
 							//Open child table when user clicks the image
@@ -172,28 +173,25 @@ require('../functions.php');
 										pageSize: 3,
 										actions: {
 											listAction: 'actionsUnProfesor.php?action=list&profesorid=' + staffData.record.id_profesor,
-											// deleteAction: '/accionescursos.php?action=delete&PersonaID=' + staffData.record.PersonaID,
+											// createAction: 'actionsUnProfesor.php?action=update&profesorid==' + staffData.record.id_profesor,
 											updateAction: 'actionsUnProfesor.php?action=update&profesorid=' + staffData.record.id_profesor,
-											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,
+											deleteAction: 'actionsUnProfesor.php?action=delete&profesorid=' + staffData.record.id_profesor,
 											},
 										fields: {
 											id_profesor: {
-												key: true,
+												defaultValue:staffData.record.id_profesor,
 												create: false,
 												edit: false,
 												list: false
 											},
-											id_asignatura: {
+											id_asignatura: { 
 												title: 'Asignatura',
+												key: true,
 												width: '100%',
+												options: 'actionsUnProfesor.php?action=getAssigId',
 												list:true,
 												edit: true,
 												create:true,
-												options: { '1': 'DISEÑO Y GESTION DE BASES DE DATOS', 
-														   '2': 'FUNDAMENTOS DE LAS BASES DE DATOS',
-														   '3': 'FUNDAMENTOS DE LA PROGRAMACION', 
-														   '4': 'HISTORIA DE LA INFORMATICA', 
-														   '5': 'PROGRAMACION CONCURRENTE' }
 											},
 											codigo: {
 												title: 'Codigo',
