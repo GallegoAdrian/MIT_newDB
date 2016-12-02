@@ -66,7 +66,7 @@ require('../functions.php');
 				createAction: 'actionsAlumnos.php?action=create',
 				deleteAction: 'actionsAlumnos.php?action=delete'
 			},
-						fields: {
+			fields: {
 				id_alumno: {
 					key: true,
 					list: false
@@ -138,7 +138,84 @@ require('../functions.php');
 					type: 'checkbox',
                     values: { '0': 'NO', '1': 'SI' },
                     defaultValue: '1'
-				}
+				},
+				alumnos: {
+					title: '',
+					width: '3%',
+					sorting: false,
+					edit: false,
+					create: false,
+					display: function (staffData) {
+
+					//Create an image that will be used to open child table
+							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
+							//Open child table when user clicks the image
+							$img.click(function () {
+									$('#PeopleTableContainer').jtable('openChildTable',
+									$img.closest('tr'),
+									{
+										title: staffData.record.nombre + ' - Matriculado en:',
+										sorting: true,
+										defaultSorting: 'nombre ASC',
+										paging: true,
+										pageSize: 3,
+										actions: {
+											listAction: 'actionsUnAlumno.php?action=list&alumnoid=' + staffData.record.id_alumno,
+											// deleteAction: 'actionsUnGrado.php?action=delete&gradoid=' + staffData.record.id_grado,
+											// updateAction: 'actionsUnGrado.php?action=update&gradoid=' + staffData.record.id_grado,
+											// createAction: 'actionsUnGrado.php?action=create&gradoid=' + staffData.record.id_grado,
+											},
+										fields: {
+											id_alumno: {
+												key: true,
+												list:false,
+												edit: false,
+												create:false
+											},
+											descripcion: {
+												title: 'Descripcion',
+												width: '20%',
+												list:true,
+												edit: true,
+												create:false
+											},
+											curso_esc: {
+												title: 'Curso esoclar',
+												width: '20%',
+												list:true,
+												edit: true,
+												create:false
+											},
+											convoc: {
+												title: 'Convocatoria',
+												width: '20%',
+												list:true,
+												edit: true,
+												create:false
+											},
+											nota: {
+												title: 'Nota',
+												width: '20%',
+												list:true,
+												edit: true,
+												create:false
+											},
+											baixa: {
+												title: 'Baixa',
+												width: '20%',
+												list:true,
+												edit: true,
+												create:false
+											},
+										}
+									}, function (data) { //opened handler
+									data.childTable.jtable('load');
+								});
+							});
+							//Return image to show on the person row
+							return $img;
+						}
+					},
 			}
 		});
 
