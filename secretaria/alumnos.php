@@ -37,6 +37,7 @@ require('../functions.php');
 		<section class="profile-content" >
 			<h1 class="page-header">Tabla Alumnos</h1>
 			<div id="PeopleTableContainer"></div>
+			<button id="mail" onclick="sendMail(dni);">Enviar Mail</button>
 		</section>
 	</main>
 	<?php
@@ -47,6 +48,7 @@ require('../functions.php');
 	?>
 </body>
 <script type="text/javascript">
+	var dni = [];
 	$(document).ready(function () {
 		
 		$('#PeopleTableContainer').jtable({
@@ -138,6 +140,7 @@ require('../functions.php');
 					type: 'checkbox',
                     values: { '0': 'NO', '1': 'SI' },
                     defaultValue: '1'
+<<<<<<< HEAD
 				},
 				alumnos: {
 					title: '',
@@ -217,11 +220,46 @@ require('../functions.php');
 						}
 					},
 			}
+=======
+				}
+			},
+			selectionChanged: function () {
+                //Get all selected rows
+                var $selectedRows = $('#PeopleTableContainer').jtable('selectedRows');
+                $('#SelectedRowList').empty();
+                if ($selectedRows.length > 0) {
+                    //Show selected rows
+                    //console.log($selectedRows);
+                    dni = [];
+                    $selectedRows.each(function () {
+                        var record = $(this).data('record');
+                        dni.push(record.dni);
+                        // delete dni[0];
+                    });
+                } else {
+                	dni = [];
+                    //No rows selected
+                    $('#SelectedRowList').append('No row selected! Select rows to see here...');
+                }
+            }
+>>>>>>> 73ef5d50d8f1ccfec211c5c8909f6562ccc60c28
 		});
-
 		//Load person list from server
 		$('#PeopleTableContainer').jtable('load');
-
 		});
+	function sendMail(dni){
+		console.log('send mail');
+		var jsonString = JSON.stringify(dni);
+		   $.ajax({
+		        type: "POST",
+		        url: "../mail.php",
+		        data: {data : jsonString}, 
+		        cache: false,
+		        success: function(response){
+		            alert('sent!');
+		        }
+		    });
+	}
+
 </script>
 </html>
