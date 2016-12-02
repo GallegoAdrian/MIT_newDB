@@ -138,16 +138,22 @@ require('../functions.php');
 										pageSize: 3,
 										actions: {
 											listAction: 'actionsUnGrado.php?action=list&gradoid=' + staffData.record.id_grado,
-											// deleteAction: '/accionescursos.php?action=delete&PersonaID=' + staffData.record.PersonaID,
+											deleteAction: 'actionsUnGrado.php?action=delete&gradoid=' + staffData.record.id_grado,
 											updateAction: 'actionsUnGrado.php?action=update&gradoid=' + staffData.record.id_grado,
 											// createAction: '/accionescursos.php?action=create&PersonaID=' + staffData.record.PersonaID,
 											},
 										fields: {
 											id_grado: {
-												key: true,
-												create: false,
+												defaultValue:staffData.record.id_grado,
+												list:false,
 												edit: false,
-												list: false
+												create:false
+											},
+											id_alumno:{
+												key: true,
+												list:false,
+												edit: false,
+												create:false
 											},
 											nombre: {
 												title: 'Nombre',
