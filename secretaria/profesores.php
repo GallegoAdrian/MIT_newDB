@@ -180,20 +180,15 @@ require('../functions.php');
 											deleteAction: 'actionsUnProfesor.php?action=delete&profesorid=' + staffData.record.id_profesor,
 											},
 										fields: {
-											id_imparte: {
-												create: false,
-												edit: false,
-												list: false,
-											},
 											id_profesor: {
 												defaultValue:staffData.record.id_profesor,
-												key: true,
 												create: false,
 												edit: false,
 												list: false,
 											},
 											id_asignatura: { 
 												title: 'Asignatura',
+												key: true,
 												width: '100%',
 												options: 'actionsUnProfesor.php?action=getAssigId',
 												list:true,
