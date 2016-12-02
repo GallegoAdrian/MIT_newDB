@@ -36,7 +36,7 @@ require('../functions.php');
 	<!--JTABLES: start-->
 	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-	<link href="../scripts/jtable/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
 	<!--link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" /-->
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
@@ -64,12 +64,16 @@ require('../functions.php');
 	$(document).ready(function () {
 		
 		$('#PeopleTableContainer').jtable({
-			title: 'Tabla de Alumnos',
+			//title: 'Tabla de Alumnos',
 			paging: true,
 			pageSize: 3,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
+			selecting: false, //Enable selecting
+            multiselect: false, //Allow multiple selecting
+            selectingCheckboxes: false, //Show checkboxes on first column
+            //selectOnRowClick: false, //Enable this to only select using checkboxes
 			actions: {
 				listAction:   'actionsProfesores.php?action=list',
 				updateAction: 'actionsProfesores.php?action=update',
@@ -81,28 +85,9 @@ require('../functions.php');
 					key: true,
 					list: false
 				},
-				ingreso: {
-					title: 'Ingreso',
-					width: '20%',
-					type:'date',
-					edit: true,
-					create:true
-				},
-				categoria: {
-					title: 'Categoria',
-					width: '20%',
-					edit: true,
-					create:true
-				},
-				dni: {
-					title: 'DNI',
-					width: '20%',
-					edit: true,
-					create:true
-				},
 				nombre: {
 					title: 'Nombre',
-					width: '20%',
+					width: '15%',
 					edit: true,
 					create:true
 				},
@@ -112,43 +97,65 @@ require('../functions.php');
 					edit: false,
 					create:true
 				},
-				telefono: {
-					title: 'Telefono',
-					width: '20%',
-					edit: false,
+				dni: {
+					title: 'DNI',
+					width: '5%',
+					edit: true,
 					create:true
 				},
-				email: {
-					title: 'email',
-					width: '20%',
+				telefono: {
+					title: 'Teléfono',
+					width: '5%',
 					edit: false,
-					create:true,
-					list:false
+					create: true
+				},
+				email: {
+					title: 'e-mail',
+					width: '15%',
+					edit: true,
+					create: true,
+					inputClass: 'validate[required,custom[email]]'
+				},
+				ingreso: {
+					title: 'Ingreso',
+					width: '7%',
+					type:'date',
+					edit: true,
+					create: true
+				},
+				categoria: {
+					title: 'Categoria',
+					width: '10%',
+					edit: true,
+					create: true
 				},
 				id_rol: {
 					title: 'Rol',
-					width: '20%',
+					//width: '20%',
 					edit: false,
-					create:false,
-					list:false
+					create: false,
+					list: false
 				},
 				username: {
 					title: 'Username',
-					width: '20%',
+					width: '10%',
 					edit: false,
 					create:true,
 					list:false
 				},
 				activo: {
 					title: 'Activo',
-					width: '20%',
-					edit: false,
-					create: false,
-					list:false
+					//width: '2%',
+					edit: true,
+					create: true,
+					list: false,
+					type: 'checkbox',
+                    values: { '0': 'NO', '1': 'SI' },
+                    defaultValue: '1'
 				},
 				password: {
 					title: 'password',
-					width: '20%',
+					width: '10%',
 					edit: false,
 					create: true,
 					list:false
@@ -211,7 +218,7 @@ require('../functions.php');
 							//Return image to show on the person row
 							return $img;
 						}
-					},
+					}
 			}
 		});
 
