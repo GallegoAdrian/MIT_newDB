@@ -194,8 +194,8 @@ require('../functions.php');
 												list: false,
 											},
 											id_asignatura: { 
-												title: 'Asignatura',
 												key: true,
+												title: 'Asignatura',
 												width: '100%',
 												options: 'actionsUnProfesor.php?action=getAssigId',
 												list:true,

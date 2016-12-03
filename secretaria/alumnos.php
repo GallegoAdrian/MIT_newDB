@@ -158,26 +158,26 @@ var dni = [];
 									{
 										title: 'Asignaturas '+staffData.record.nombre+' '+staffData.record.apellidos,
 										sorting: true,
-										defaultSorting: 'descripcion ASC',
+										defaultSorting: 'id_asignatura ASC',
 										paging: true,
 										pageSize: 3,
 										actions: {
 											listAction: 'actionsUnAlumno.php?action=list&alumnoid=' + staffData.record.id_alumno,
-											//createAction: 'actionsUnProfesor.php?action=create&profesorid=' + staffData.record.id_profesor,
-											//updateAction: 'actionsUnProfesor.php?action=update&profesorid=' + staffData.record.id_profesor,
-											//deleteAction: 'actionsUnProfesor.php?action=delete&profesorid=' + staffData.record.id_profesor,
+											createAction: 'actionsUnAlumno.php?action=create&alumnoid=' + staffData.record.id_alumno,
+											updateAction: 'actionsUnAlumno.php?action=update&alumnoid=' + staffData.record.id_alumno,
+											deleteAction: 'actionsUnAlumno.php?action=delete&alumnoid=' + staffData.record.id_alumno,
 											},
 										fields: {
 											id_alumno: {
-												key: true,
 												defaultValue:staffData.record.id_alumno,
 												create: false,
 												edit: false,
 												list: false,
 											},
-											descripcion: { 
+											id_asignatura: { 
 												title: 'Descripcion',
 												width: '20%',
+												options: 'actionsUnAlumno.php?action=getAssigId',
 												list:true,
 												edit: true,
 												create:true,
@@ -186,27 +186,44 @@ var dni = [];
 												title: 'Curso',
 												width: '20%',
 												list:true,
-												edit: false,
-												create:false
+												edit: true,
+												create:true
 											},
 											convoc: {
 												title: 'Convocatoria',
 												width: '0%',
 												list:true,
-												edit: false,
-												create:false
+												edit: true,
+												create:true
 											},
 											nota: {
 												title: 'Nota',
 												width: '0%',
 												list:true,
-												edit: false,
-												create:false
+												edit: true,
+												create:true
 											},
 											baixa: {
 												title: 'Baixa',
 												width: '0%',
 												list:true,
+												edit: true,
+                    							options: { '0': 'NO', '1': 'SI' },
+												create:false
+											},
+											id_grd_alu: {
+												title: 'id_grado_alumno',
+												width: '0%',
+												list:false,
+												edit: false,
+												create:false
+											},
+											id_matricula: {
+												key: true,
+												title: 'id_matricula',
+												width: '0%',
+												visibility:'hidden',
+												list:false,
 												edit: false,
 												create:false
 											}
