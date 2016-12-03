@@ -104,18 +104,18 @@ function logout(){
 function getHeader($ruta = null){
 	if ($ruta == null) {
 		echo '<header>
-            <img class="logo" src="'.$ruta.'images/mit.png">
             <div id="title">
-              Massachusetts Institute of Technology
+              <span>Massachusetts Institute of Technology</span>
+              <img class="logo" src="'.$ruta.'images/mit.png">
           	</div>
       </header>';
 	}
 	else{
 		echo '<header>
 			<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
-            <img class="logo" src="'.$ruta.'images/mit.png">
             <div id="title">
-              Massachusetts Institute of Technology
+              <span>Massachusetts Institute of Technology</span>
+              <img class="logo" src="'.$ruta.'images/mit.png">
           	</div>
     	</header>';
 	}
