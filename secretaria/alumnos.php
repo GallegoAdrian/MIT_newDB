@@ -158,7 +158,7 @@ var dni = [];
 									{
 										title: 'Asignaturas '+staffData.record.nombre+' '+staffData.record.apellidos,
 										sorting: true,
-										defaultSorting: 'id_asignatura ASC',
+										defaultSorting: 'nota ASC',
 										paging: true,
 										pageSize: 3,
 										actions: {
@@ -211,10 +211,11 @@ var dni = [];
                     							options: { '0': 'NO', '1': 'SI' },
 												create:false
 											},
-											id_grd_alu: {
-												title: 'id_grado_alumno',
+											id_grado: {
+												key: true,
+												title: 'id_grado',
 												width: '0%',
-												list:false,
+												list:true,
 												edit: false,
 												create:false
 											},

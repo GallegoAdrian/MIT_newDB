@@ -103,10 +103,16 @@ header {
   transition-duration: 0.4s;
 }
 
-#title,.profile-content{
+#title{
   -webkit-transition-duration: .4s;
   -moz-transition-duration: .4s;
   transition-duration: .4s;
+}
+
+.profile-content{
+  -webkit-transition-duration: .8s;
+  -moz-transition-duration: .8s;
+  transition-duration: .8s;
 }
 
 
