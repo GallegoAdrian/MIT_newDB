@@ -36,7 +36,7 @@ require('../functions.php');
 	<!--JTABLES: start-->
 	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
@@ -80,45 +80,9 @@ require('../functions.php');
 					key: true,
 					list: false
 				},
-				nombre: {
-					title: 'Nombre',
-					width: '20%',
-					edit: true,
-					create:true
-				},
-				duracion: {
-					title: 'Duracion',
-					width: '20%',
-					edit: true,
-					create:true
-				},
-				creditos: {
-					title: 'Creditos',
-					width: '20%',
-					edit: true,
-					create:true
-				},
-				tipo_docencia: {
-					title: 'Tipo de Docencia',
-					width: '20%',
-					edit: true,
-					create:true
-				},
-				nota_corte_pau: {
-					title: 'Nota de Corte',
-					width: '20%',
-					edit: true,
-					create:true
-				},
-				precio_cre: {
-					title: 'Precio',
-					width: '20%',
-					edit: true,
-					create:true
-				},
-				alumnos: {
+								alumnos: {
 					title: '',
-					width: '3%',
+					width: '1%',
 					sorting: false,
 					edit: false,
 					create: false,
@@ -158,21 +122,28 @@ require('../functions.php');
 											},
 											nombre: {
 												title: 'Nombre',
-												width: '33%',
+												width: '20%',
+												list:true,
+												edit: true,
+												create:false
+											},
+											apellidos: {
+												title: 'Apellidos',
+												width: '30%',
 												list:true,
 												edit: true,
 												create:false
 											},
 											curso_esc: {
 												title: 'Curso',
-												width: '33%',
+												width: '10%',
 												list:true,
 												edit: true,
 												create:false
 											},
 											baixa: {
 												title: 'Baixa',
-												width: '33%',
+												width: '10%',
 												list:true,
 												edit: true,
 												create:false
@@ -186,6 +157,42 @@ require('../functions.php');
 							return $img;
 						}
 					},
+				nombre: {
+					title: 'Nombre',
+					width: '30%',
+					edit: true,
+					create:true
+				},
+				duracion: {
+					title: 'Duración',
+					width: '5%',
+					edit: true,
+					create:true
+				},
+				creditos: {
+					title: 'Creditos',
+					width: '5%',
+					edit: true,
+					create:true
+				},
+				tipo_docencia: {
+					title: 'Tipo de Docencia',
+					width: '7%',
+					edit: true,
+					create:true
+				},
+				nota_corte_pau: {
+					title: 'Nota de Corte',
+					width: '7%',
+					edit: true,
+					create:true
+				},
+				precio_cre: {
+					title: 'Precio',
+					width: '5%',
+					edit: true,
+					create:true
+				}
 			}
 		});
 
