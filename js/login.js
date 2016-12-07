@@ -1,7 +1,23 @@
-  $(document).ready(function() {
-    $('#login').click(function(){
+
+$(document).ready(function() {
+
+    $("input").keypress(function() {
+
+       var key = event.keyCode || event.which;
+
+       if ( key === 13 ) callback();
+    });
+
+    $('#login').click(callback);
+
+});
+
+
+var callback = function() {
+
       var username = $('#username').val();
       var pass = $('#password').val();
+
       if($.trim(username).length > 0 && $.trim(pass).length > 0){
         $.ajax({
           url:"logueame.php",
@@ -30,5 +46,5 @@
       }else{
           $("#result").html("<div class='alert alert-warning alert-dismissible'><strong>¡Aviso!</strong> Debes introducir todos los campos.</div>");
       }
-    });
-  });
+};
+

@@ -77,7 +77,7 @@ try
 			$consulta = "INSERT INTO profesor(id_profesor,ingreso,categoria) 
 						 VALUES('" . $row['id_persona'] . "','" . $_POST["ingreso"] . "', '" . $_POST["categoria"] . "');";
 
-			$result2 = mysqli_query($connect, $consulta);
+			$result = mysqli_query($connect, $consulta);
 
 			$result = mysqli_query($connect, "SELECT * FROM profesor WHERE id_profesor = LAST_INSERT_ID();");
 

@@ -3,11 +3,20 @@ jQuery(document).ready(function($){
 		$content_wrapper = $('.cd-main-content'),
 		$navigation = $('header');
 
+
+
 	//open-close lateral menu clicking on the menu icon
 	$lateral_menu_trigger.on('click', function(event){
 		event.preventDefault();
 		
 		$lateral_menu_trigger.toggleClass('is-clicked');
+		if ($(this).hasClass('is-clicked')){
+				$('#title').css('transform', 'translateX(-260px)');
+				$('.profile-content').css('margin-right', '260px');
+		}else{
+				$('#title').css('transform', 'translateX(0)');
+				$('.profile-content').css('margin-right', '0px');
+		}
 		$navigation.toggleClass('lateral-menu-is-open');
 		$content_wrapper.toggleClass('lateral-menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 			// firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
@@ -21,10 +30,17 @@ jQuery(document).ready(function($){
 		}
 	});
 
+
+    
+
+
+
 	//close lateral menu clicking outside the menu itself
 	$content_wrapper.on('click', function(event){
 		if( !$(event.target).is('#cd-menu-trigger, #cd-menu-trigger span') ) {
 			$lateral_menu_trigger.removeClass('is-clicked');
+			$('#title').css('transform', 'translateX(0)');
+			$('.profile-content').css('margin-right', '0px');
 			$navigation.removeClass('lateral-menu-is-open');
 			$content_wrapper.removeClass('lateral-menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 				$('body').removeClass('overflow-hidden');

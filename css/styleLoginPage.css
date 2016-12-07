@@ -21,8 +21,8 @@ header{
 
 .logo{
 	width: 150px;
-	padding-top: 10px;
 	float:right;
+	padding-top:10px;
 }
 
 .login-box img{
@@ -118,7 +118,12 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 #title{
 	font-weight: 700;
 	float: right;
-	padding-top:64px;
+}
+
+#title span{
+	position: relative;
+    display: inline-block;
+    padding-top: 65px;
 }
 
 .child-opener-image{
@@ -133,6 +138,5 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
   #title{
 	font-weight: 700;
 	float: right;
-	padding-top:64px;
    }
 }

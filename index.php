@@ -38,7 +38,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
                         <div class="form-group">
                         <div class="row">
                           <div class="col-sm-12">
-                            <input type="text" name="username" id="username" class="form-control input input-lg" placeholder="Usuario">
+                            <input type="text" name="username" id="username" class="form-control input input-lg login" placeholder="Usuario">
                             <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
                           </div>
                         </div>
@@ -46,13 +46,13 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
                       <div class="row">
                         <div class="form-group">
                           <div class="col-sm-12">
-                            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña">
+                            <input type="password" name="password" id="password" class="form-control input-lg login" placeholder="Contraseña">
                             <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="button" name="login" id="login" value="INICIA SESIÓN" class="btn btn-success btn-lg">
+                        <input type="button" name="login" id="login" value="INICIA SESIÓN" class="btn btn-success btn-lg login">
                       </div>
                       <span id="result"></span>
                   </div>
