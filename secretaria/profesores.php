@@ -94,14 +94,16 @@ require('../functions.php');
 					display: function (staffData) {
 						console.log(staffData);
 						//Create an image that will be used to open child table
-						var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
+						var $img = $('<img class="child-opener-image jtable-command-button" src="../images/list_metro.png" title="Ver las asignaturas" />');
+
 						//Open child table when user clicks the image
 						$img.click(function () {
 								$('#PeopleTableContainer').jtable('openChildTable',
 								//$('.jtable-child-row').slideUp(),
 								$img.closest('tr'),
+
 								{
-									//title: 'Asignaturas '+staffData.record.nombre+' '+staffData.record.apellidos,
+									title:  'Profesor/a: '+ staffData.record.apellidos +', '+staffData.record.nombre,
 									sorting: true,
 									defaultSorting: 'codigo ASC',
 									paging: true,
@@ -113,6 +115,7 @@ require('../functions.php');
 										deleteAction: 'actionsUnProfesor.php?action=delete&profesorid=' + staffData.record.id_profesor,
 										},
 									fields: {
+
 										id_profesor: {
 											defaultValue:staffData.record.id_profesor,
 											create: false,
@@ -122,7 +125,7 @@ require('../functions.php');
 										id_asignatura: {
 											title: 'Asignaturas',
 											key: true,
-											width: '90%',
+											width: '99%',
 											options: 'actionsUnProfesor.php?action=getAssigId',
 											list:true,
 											edit: true,
@@ -130,7 +133,7 @@ require('../functions.php');
 										},
 										codigo: {
 											title: 'Codigo',
-											width: '10%',
+											width: '1%',
 											visibility:'hidden',
 											list: true,
 											edit: false,
