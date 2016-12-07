@@ -65,16 +65,16 @@ THE SOFTWARE.
 
             //Localization
             messages: {
-                serverCommunicationError: 'An error occured while communicating to the server.',
-                loadingMessage: 'Loading records...',
-                noDataAvailable: 'No data available!',
-                areYouSure: 'Are you sure?',
-                save: 'Save',
-                saving: 'Saving',
-                cancel: 'Cancel',
+                serverCommunicationError: 'Ocurrio un error mientras se comunicaba con el servidor.',
+                loadingMessage: 'Cargando registros...',
+                noDataAvailable: '¡No hay datos disponibles!',
+                areYouSure: '¿Esta usted seguro?',
+                save: 'Guardar',
+                saving: 'Guardando',
+                cancel: 'Cancelar',
                 error: 'Error',
-                close: 'Close',
-                cannotLoadOptionsFor: 'Can not load options for field {0}'
+                close: 'Cerrar',
+                cannotLoadOptionsFor: 'No se pueden cargar opciones para el campo {0}'
             }
         },
 
@@ -1642,7 +1642,7 @@ THE SOFTWARE.
 
             //Localization
             messages: {
-                editRecord: 'Edit Record'
+                editRecord: 'Editar Registro'
             }
         },
 
