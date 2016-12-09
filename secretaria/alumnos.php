@@ -38,6 +38,7 @@ require('../functions.php');
 			<h1 class="page-header">Tabla Alumnos</h1>
 			<div id="PeopleTableContainer"></div>
 			<button id="mail" onclick="sendMail(dni);">Enviar Mail</button>
+			<button id="pdf" onclick="downloadPDF(dni);">Descargar PDF</button>
 		</section>
 	</main>
 	<?php
@@ -167,6 +168,19 @@ require('../functions.php');
 		});
 	function sendMail(dni){
 		console.log('send mail');
+		var jsonString = JSON.stringify(dni);
+		   $.ajax({
+		        type: "POST",
+		        url: "../mail.php",
+		        data: {data : jsonString}, 
+		        cache: false,
+		        success: function(response){
+		            alert('sent!');
+		        }
+		    });
+	}
+	function downloadPDF(dni){
+		console.log('download PDF');
 		var jsonString = JSON.stringify(dni);
 		   $.ajax({
 		        type: "POST",
