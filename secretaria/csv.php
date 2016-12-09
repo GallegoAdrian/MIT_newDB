@@ -39,10 +39,10 @@ if ( $data == "" )
     $data = "\n(0) Records Found!\n";
 }
 
-// header("Content-type: application/octet-stream");
-// header("Content-Disposition: attachment; filename=your_desired_name.csv");
-// header("Pragma: no-cache");
-// header("Expires: 0");
-// print "$header\n$data";
+header("Content-type: application/octet-stream");
+header("Content-Disposition: attachment; filename=your_desired_name.csv");
+header("Pragma: no-cache");
+header("Expires: 0");
+print "$header\n$data";
 mysqli_close($connect);
 ?>
