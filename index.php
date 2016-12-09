@@ -69,19 +69,23 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
     $( "#alumne" ).on( "click", function() {
       $('#username').val('llorens.anna');
       $('#password').val('46258585M');
+      $('#login').click();
 
     });
     $( "#profesor" ).on( "click", function() {
       $('#username').val('gomez.eva');
       $('#password').val('21111222A');
+      $('#login').click();
     });
     $( "#coordinador" ).on( "click", function() {
       $('#username').val('cifuentes.agapito');
       $('#password').val('55777666A');
+      $('#login').click();
     });
     $( "#secretaria" ).on( "click", function() {
       $('#username').val('god');
       $('#password').val('god');
+      $('#login').click();
     });
   </script>
 </html>
