@@ -1,34 +1,16 @@
 <?php
-
-require_once('mailer/vendor/autoload.php');
-require_once('functions.php');
-
-$m = new PHPMailer;
-
-$m->isSMTP();
-$m->SMTPAuth = true;
-$m->SMTPDebug = 2;
-
-$m->Host = 'smtp.gmail.com';
-$m->Username = 'webmonkeypd@gmail.com';
-$m->Password = 'piZzarra1617';
-$m->SMTPSecure = 'ssl';
-$m->Port = 465;
-
-$m->From = 'webmonkeypd@gmail.com';
-$m->FromName = 'Web Monkey';
-$m->addReplyTo('nicofviteri@gmail.com', 'Reply address');
-
-$m->addAddress('francesc.edo.trias@gmail.com', 'Francesc Edo');
-$m->addAddress('nicofviteri@gmail.com', 'Nico Figueroa');
-
-$m->addStringAttachment(pdf(1, 'email'), 'pdf.pdf');
-
-$m->Subject = 'YA FUNCIONA 2';
-$m->Body = 'Por fin funciona!!!';
-$m->AltBody = 'hola!';
-
-if($m->send()){
-	echo 'email sent!';
-}
+//if(isset($_POST)){
+	require_once('functions.php');
+	$data = $_GET['hash'];
+	// $data = array('13490884O');
+	$conn = connectDB();
+	// $result = select($conn, 'id_persona as id', 'persona', 'dni = "'.$data.'" LIMIT 1');
+	$result = select($conn, 'id_persona as id, dni', 'persona' );
+	foreach ($result as $row) {
+		if ($data === sha1($row['dni'])) {
+			pdf($row['id'], 'view');
+			break;
+		}
+	}
+//}
 

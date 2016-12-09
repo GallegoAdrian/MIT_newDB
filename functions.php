@@ -122,7 +122,7 @@ function getHeader($ruta = null){
 }
 //Retorna el footer
 function footer(){
-	echo "<footer><div style='float: left; text-align: left;'>Alumne: Llorens.Anna / 46258585M<br>Professor: GOMEZ.EVA / 21111222A<br>Coordinador: CIFUENTES.AGAPITO / 55777666A<br>Secretaria: god / god</div><span> © MIT, 2016-2017</span></footer>";
+	echo "<footer><div style='float: left; text-align: left;'><p id='alumne'>Alumne: llorens.anna / 46258585M</p><p id='profesor'>Professor: gomez.eva / 21111222A</p><p id='coordinador'>Coordinador: cifuentes.agapito / 55777666A</p><p id='secretaria'>Secretaria: god / god</p></div><span> © MIT, 2016-2017</span></footer>";
 }
 /*
 type:
@@ -221,10 +221,7 @@ type:
 	/*
 	PDF: START
 	*/
-
-
-	function pdf($id, $method){
-		require('pdf/tfpdf.php');
+	require_once('pdf/tfpdf.php');
 		class PDF extends tFPDF
 		{
 			// Cabecera de página
@@ -264,6 +261,8 @@ type:
 			    $this->Cell(0,6," Creado: $today[mday] - $today[mon] - $today[year]",0,1,'R', false);
 			}
 		}
+
+	function pdf($id, $method){
 		$conn = connectDB();
 		$result = getNotasAlumno($conn, $id);
 		$pdf = new PDF();
@@ -282,6 +281,9 @@ type:
 		if ($method == 'download') {
 			# code...
 			$pdf->Output('notas.pdf', 'D');
+		}
+		elseif ($method == 'view') {
+			$pdf->Output();	
 		}
 		else{
 			$pdfdoc = $pdf->Output('', 'S');
@@ -315,6 +317,6 @@ type:
 		$result = select($conn, 'id_persona as id, email, nombre, apellidos', 'persona', 'dni = "'.$dni.'" LIMIT 1');
 		$row = mysqli_fetch_array($result);
 
-		return $row; 
+		return $row;
 	}
 ?>

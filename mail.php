@@ -22,6 +22,8 @@ if (isset($_POST)) {
 	
 	$conn = connectDB();
 	foreach ($data as $alumnos) {
+		$m->ClearAllRecipients();
+		$m->clearAttachments();
 		$row = getMail($conn, $alumnos);
 		$m->addAddress($row['email'], $row['nombre'].' '.$row['apellidos']);
 		$m->addStringAttachment(pdf($row['id'], 'email'), 'pdf.pdf');
