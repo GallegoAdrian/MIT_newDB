@@ -40,6 +40,7 @@ require('../functions.php');
 	<!--link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" /-->
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+    <script src="../scripts/jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
 </head>
 <body>
@@ -64,6 +65,7 @@ require('../functions.php');
 	$(document).ready(function () {
 		
 		$('#PeopleTableContainer').jtable({
+			messages: spanishMessages,
 			//title: 'Tabla de Alumnos',
 			paging: true,
 			pageSize: 3,

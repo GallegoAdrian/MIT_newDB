@@ -35,9 +35,10 @@ require('../functions.php');
     
 	<!--JTABLES: start-->
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-	<link href="../scripts/jtable/themes/lightcolor/blue/jtable.css" rel="stylesheet" type="text/css" />
+	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+    <script src="../scripts/jtable/location/jquery.jtable.spanish.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
 </head>
 <body>

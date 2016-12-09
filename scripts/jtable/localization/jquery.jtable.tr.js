@@ -1,25 +1,25 @@
 ﻿/*
-    jTable localization file for 'Turkish' language.
+    jTable localization file for 'spanish' language.
     Author: Halil İbrahim Kalkan
 */
 (function ($) {
 
     $.extend(true, $.hik.jtable.prototype.options.messages, {
-        serverCommunicationError: 'Ocurrio un error mientras se comunicaba con el servidor.',
-        loadingMessage: 'Cargando registros...',
-        noDataAvailable: '¡No hay datos disponibles!',
-        addNewRecord: '+ Añadir nuevo registro',
-        editRecord: 'Editar',
-        areYouSure: '¿Esta usted seguro?',
+        serverCommunicationError: 'Sunucu ile iletişim kurulurken bir hata oluştu.',
+        loadingMessage: 'Kayıtlar yükleniyor...',
+        noDataAvailable: 'Hiç kayıt bulunmamaktadır!',
+        addNewRecord: '+ Yeni kayıt ekle',
+        editRecord: 'Kayıt düzenle',
+        areYouSure: 'Emin misiniz?',
         deleteConfirmation: 'Bu kayıt silinecektir. Emin misiniz?',
-        save: 'Guardar',
-        saving: 'Guardando',
-        cancel: 'Cancelar',
+        save: 'Kaydet',
+        saving: 'Kaydediyor',
+        cancel: 'İptal',
         deleteText: 'Sil',
         deleting: 'Siliyor',
-        error: 'Error',
-        close: 'Cerrar',
-        cannotLoadOptionsFor: 'No se pueden cargar opciones para el campo {0}'
+        error: 'Hata',
+        close: 'Kapat',
+        cannotLoadOptionsFor: '{0} alanı için seçenekler yüklenemedi!',
         pagingInfo: 'Toplam {2}, {0} ile {1} arası gösteriliyor',
         canNotDeletedRecords: '{1} kayıttan {0} adedi silinemedi!',
         deleteProggress: '{1} kayıttan {0} adedi silindi, devam ediliyor...'

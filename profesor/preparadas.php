@@ -40,6 +40,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+    <script src="../scripts/jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
     
 </head>
