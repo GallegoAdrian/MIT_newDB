@@ -176,9 +176,8 @@ var dni = [];
 					create: false,
 					display: function (staffData) {
 						//console.log(staffData);
-						console.log(staffData.record.dni);
 					//Create an image that will be used to open child table
-							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
+							var $img = $('<img class="child-opener-image" src="../images/pdf.png" title="Ver PDF" />');
 							$img.click(function () {
 								$.ajax({
 							        type: "POST",
