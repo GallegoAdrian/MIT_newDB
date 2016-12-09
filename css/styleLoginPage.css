@@ -134,6 +134,10 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 	text-align: center;
 }
 
+#alumne:hover, #profesor:hover, #coordinador:hover, #secretaria:hover {
+	cursor: pointer;
+}
+
 @media screen and (min-width: 600px){
   #title{
 	font-weight: 700;
