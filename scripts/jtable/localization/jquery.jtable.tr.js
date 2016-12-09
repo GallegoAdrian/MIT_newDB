@@ -5,21 +5,21 @@
 (function ($) {
 
     $.extend(true, $.hik.jtable.prototype.options.messages, {
-        serverCommunicationError: 'Sunucu ile iletişim kurulurken bir hata oluştu.',
-        loadingMessage: 'Kayıtlar yükleniyor...',
-        noDataAvailable: 'Hiç kayıt bulunmamaktadır!',
-        addNewRecord: '+ Yeni kayıt ekle',
-        editRecord: 'Kayıt düzenle',
-        areYouSure: 'Emin misiniz?',
+        serverCommunicationError: 'Ocurrio un error mientras se comunicaba con el servidor.',
+        loadingMessage: 'Cargando registros...',
+        noDataAvailable: '¡No hay datos disponibles!',
+        addNewRecord: '+ Añadir nuevo registro',
+        editRecord: 'Editar',
+        areYouSure: '¿Esta usted seguro?',
         deleteConfirmation: 'Bu kayıt silinecektir. Emin misiniz?',
-        save: 'Kaydet',
-        saving: 'Kaydediyor',
-        cancel: 'İptal',
+        save: 'Guardar',
+        saving: 'Guardando',
+        cancel: 'Cancelar',
         deleteText: 'Sil',
         deleting: 'Siliyor',
-        error: 'Hata',
-        close: 'Kapat',
-        cannotLoadOptionsFor: '{0} alanı için seçenekler yüklenemedi!',
+        error: 'Error',
+        close: 'Cerrar',
+        cannotLoadOptionsFor: 'No se pueden cargar opciones para el campo {0}'
         pagingInfo: 'Toplam {2}, {0} ile {1} arası gösteriliyor',
         canNotDeletedRecords: '{1} kayıttan {0} adedi silinemedi!',
         deleteProggress: '{1} kayıttan {0} adedi silindi, devam ediliyor...'

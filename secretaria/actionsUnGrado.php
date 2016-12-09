@@ -10,7 +10,7 @@ try
 
 	if($_GET["action"] == "list"){
 
-			$consulta =	"SELECT gra.id_grado, per.nombre, gal.curso_esc,gal.baixa, alu.id_alumno 
+			$consulta =	"SELECT gra.id_grado, per.nombre, per.apellidos, gal.curso_esc,gal.baixa, alu.id_alumno 
 							FROM persona AS per, alumno AS alu, grados_alumnos AS gal, grados AS gra 
 							WHERE per.id_persona = alu.id_alumno AND alu.id_alumno = gal.id_alumno AND gal.id_grado = gra.id_grado AND gra.id_grado = '{$_GET['gradoid']}'";
 
@@ -18,7 +18,7 @@ try
 
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta =	"SELECT gra.id_grado, per.nombre, gal.curso_esc,gal.baixa, alu.id_alumno 
+			$consulta =	"SELECT gra.id_grado, per.nombre, per.apellidos, gal.curso_esc,gal.baixa, alu.id_alumno 
 							FROM persona AS per, alumno AS alu, grados_alumnos AS gal, grados AS gra 
 							WHERE per.id_persona = alu.id_alumno AND alu.id_alumno = gal.id_alumno AND gal.id_grado = gra.id_grado AND gra.id_grado = '{$_GET['gradoid']}'
 					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
@@ -84,7 +84,7 @@ try
 	}
 	else if($_GET["action"] == "getAlumnoId"){
 
-			$consulta = "SELECT alu.id_alumno, per.nombre FROM persona AS per,alumno AS alu WHERE alu.id_alumno = per.id_persona";
+			$consulta = "SELECT alu.id_alumno, per.nombre, per.apellidos FROM persona AS per,alumno AS alu WHERE alu.id_alumno = per.id_persona";
 
 			$result = mysqli_query($connect, $consulta);
 
@@ -92,7 +92,7 @@ try
 
 			while($row = mysqli_fetch_array($result)){
 				$arr = array();
-				$arr['DisplayText'] = $row['nombre'];
+				$arr['DisplayText'] = $row['apellidos'].", ".$row['nombre'];
 				$arr['Value'] = $row['id_alumno'];
 				$rows[] = $arr;
 			}

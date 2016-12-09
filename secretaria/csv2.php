@@ -3,7 +3,11 @@
 require('../functions.php');
 $connect = connectDB();
 
-// $select = 'SELECT nombre,apellidos,id_persona FROM `persona`';
+// $select = "SELECT DISTINCT alu.id_alumno, per.nombre, mat.nota
+//             FROM asignatura AS asi, matricula AS mat, alumno AS alu, persona AS per
+//             WHERE asi.id_asignatura = mat.id_asignatura
+//             AND mat.id_alumno = alu.id_alumno
+//             AND alu.id_alumno = per.id_persona";
 
 // $result = mysqli_query($connect, $select);
 
@@ -29,9 +33,13 @@ $connect = connectDB();
 //     //     fputcsv( _,array_values($row));
 //     // }
 //     die;
-// // }
+// }
 
-    $select = 'SELECT nombre,apellidos,id_persona FROM `persona`';
+    $select = "SELECT DISTINCT alu.id_alumno, per.nombre, mat.nota
+            FROM asignatura AS asi, matricula AS mat, alumno AS alu, persona AS per
+            WHERE asi.id_asignatura = mat.id_asignatura
+            AND mat.id_alumno = alu.id_alumno
+            AND alu.id_alumno = per.id_persona";
 
     $query = mysqli_query($connect, $select);
 
