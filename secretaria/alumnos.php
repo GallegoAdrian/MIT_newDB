@@ -262,17 +262,18 @@ var dni = [];
 		$('#PeopleTableContainer').jtable('load');
 		});
 	function sendMail(dni){
-		console.log('send mail');
+
 		var jsonString = JSON.stringify(dni);
-		   $.ajax({
-		        type: "POST",
-		        url: "../mail.php",
-		        data: {data : jsonString}, 
-		        cache: false,
-		        success: function(response){
-		            alert('sent!');
-		        }
-		    });
+		console.log(jsonString);
+	   $.ajax({
+	        type: "POST",
+	        url: "../mail.php",
+	        data: {data : jsonString}, 
+	        cache: false,
+	        success: function(response){
+	            alert('sent!');
+	        }
+	    });
 	}
 	function downloadPDF(dni){
 		console.log('download PDF');

@@ -221,10 +221,7 @@ type:
 	/*
 	PDF: START
 	*/
-
-
-	function pdf($id, $method){
-		require('pdf/tfpdf.php');
+	require_once('pdf/tfpdf.php');
 		class PDF extends tFPDF
 		{
 			// Cabecera de página
@@ -264,6 +261,8 @@ type:
 			    $this->Cell(0,6," Creado: $today[mday] - $today[mon] - $today[year]",0,1,'R', false);
 			}
 		}
+
+	function pdf($id, $method){
 		$conn = connectDB();
 		$result = getNotasAlumno($conn, $id);
 		$pdf = new PDF();
