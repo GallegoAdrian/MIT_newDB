@@ -38,7 +38,7 @@ require('../functions.php');
 			<h1 class="page-header">Tabla Alumnos</h1>
 			<div id="PeopleTableContainer"></div>
 			<button id="mail" onclick="sendMail(dni);">Enviar Mail</button>
-			<button id="pdf" onclick="downloadPDF(dni);">Descargar PDF</button>
+			<!-- <button id="pdf" onclick="downloadPDF(dni);">Descargar PDF</button> -->
 		</section>
 	</main>
 	<?php
@@ -81,7 +81,6 @@ var dni = [];
 					edit: false,
 					create: false,
 					display: function (staffData) {
-						console.log(staffData);
 					//Create an image that will be used to open child table
 							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
 							//Open child table when user clicks the image
@@ -168,6 +167,31 @@ var dni = [];
 							//Return image to show on the person row
 							return $img;
 						}
+				},
+				pdf: {
+					title: '',
+					width: '1%',
+					sorting: false,
+					edit: false,
+					create: false,
+					display: function (staffData) {
+						//console.log(staffData);
+						console.log(staffData.record.dni);
+					//Create an image that will be used to open child table
+							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
+							$img.click(function () {
+								$.ajax({
+							        type: "POST",
+							        url: "../hash.php",
+							        data: {string : staffData.record.dni}, 
+							        cache: false,
+							        success: function(response){
+							    		window.open('../pdf.php?hash='+response,'_blank');
+							        }
+							    });
+							});
+						return $img;
+					}
 				},
 				nombre: {
 					title: 'Nombre',
@@ -276,17 +300,18 @@ var dni = [];
 	    });
 	}
 	function downloadPDF(dni){
-		console.log('download PDF');
-		var jsonString = JSON.stringify(dni);
-		   $.ajax({
-		        type: "POST",
-		        url: "../mail.php",
-		        data: {data : jsonString}, 
-		        cache: false,
-		        success: function(response){
-		            alert('sent!');
-		        }
-		    });
+		alert('not implemented');
+		// console.log('download PDF');
+		// var jsonString = JSON.stringify(dni);
+		//    $.ajax({
+		//         type: "POST",
+		//         url: "../mail.php",
+		//         data: {data : jsonString}, 
+		//         cache: false,
+		//         success: function(response){
+		//             alert('sent!');
+		//         }
+		//     });
 	}
 </script>
 </html>

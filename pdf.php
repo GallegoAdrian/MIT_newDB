@@ -1,14 +1,16 @@
 <?php
-if(isset($_POST)){
+//if(isset($_POST)){
 	require_once('functions.php');
-	$data = json_decode(stripslashes($_POST['data']));
-	
+	$data = $_GET['hash'];
+	// $data = array('13490884O');
 	$conn = connectDB();
-	foreach ($data as $alumnos) {
-		$result = select($conn, 'id_persona as id', 'persona', 'dni = "'.$alumnos.'" LIMIT 1');
-		$row = mysqli_fetch_array($result);
-		pdf($row['id'], 'download');
+	// $result = select($conn, 'id_persona as id', 'persona', 'dni = "'.$data.'" LIMIT 1');
+	$result = select($conn, 'id_persona as id, dni', 'persona');
+	foreach ($result as $row) {
+		if ($data === sha1($row['dni'])) {
+			pdf($row['id'], 'view');
+			break;
+		}
 	}
-
-}
+//}
 

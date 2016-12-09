@@ -282,6 +282,9 @@ type:
 			# code...
 			$pdf->Output('notas.pdf', 'D');
 		}
+		elseif ($method == 'view') {
+			$pdf->Output();	
+		}
 		else{
 			$pdfdoc = $pdf->Output('', 'S');
 			return $pdfdoc;
@@ -314,6 +317,6 @@ type:
 		$result = select($conn, 'id_persona as id, email, nombre, apellidos', 'persona', 'dni = "'.$dni.'" LIMIT 1');
 		$row = mysqli_fetch_array($result);
 
-		return $row; 
+		return $row;
 	}
 ?>
