@@ -40,6 +40,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+    <script src="../scripts/jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
     
 </head>
@@ -50,12 +51,11 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	?>
 	<div id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Asignatura impartida: <?=$asignatura['descripcion']?></h1>
+			<h1 class="page-header">Asignatura preparada: <?=$asignatura['descripcion']?></h1>
 		</section>
 	</div>
 	<?php
 		getMenu(2, $connect);
-		echo $_SESSION['type'];
 		footer();
 	?>
 </body>

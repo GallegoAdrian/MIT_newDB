@@ -122,7 +122,7 @@ function getHeader($ruta = null){
 }
 //Retorna el footer
 function footer(){
-	echo "<footer><div style='float: left; text-align: left;'>Alumne: Llorens.Anna / 46258585M<br>Professor: GOMEZ.EVA / 21111222A<br>Coordinador: CIFUENTES.AGAPITO / 55777666A<br>Secretaria: god / god</div><span> © MIT, 2016-2017</span></footer>";
+	echo "<footer><div style='float: left; text-align: left;'><p id='alumne'>Alumne: llorens.anna / 46258585M</p><p id='profesor'>Professor: gomez.eva / 21111222A</p><p id='coordinador'>Coordinador: cifuentes.agapito / 55777666A</p><p id='secretaria'>Secretaria: god / god</p></div><span> © MIT, 2016-2017</span></footer>";
 }
 /*
 type:

@@ -1,4 +1,4 @@
-﻿/* 
+/* 
 
 jTable 2.0.0
 http://www.jtable.org
@@ -65,16 +65,26 @@ THE SOFTWARE.
 
             //Localization
             messages: {
-                serverCommunicationError: 'Ocurrio un error mientras se comunicaba con el servidor.',
-                loadingMessage: 'Cargando registros...',
-                noDataAvailable: '¡No hay datos disponibles!',
-                areYouSure: '¿Esta usted seguro?',
-                save: 'Guardar',
-                saving: 'Guardando',
-                cancel: 'Cancelar',
-                error: 'Error',
-                close: 'Cerrar',
-                cannotLoadOptionsFor: 'No se pueden cargar opciones para el campo {0}'
+            serverCommunicationError: 'An error occured while communicating to the server.',
+            loadingMessage: 'Loading records...',
+            noDataAvailable: 'No data available!',
+            addNewRecord: 'Add new record',
+            editRecord: 'Edit Record',
+            areYouSure: 'Are you sure?',
+            deleteConfirmation: 'This record will be deleted. Are you sure?',
+            save: 'Save',
+            saving: 'Saving',
+            cancel: 'Cancel',
+            deleteText: 'Delete',
+            deleting: 'Deleting',
+            error: 'Error',
+            close: 'Close',
+            cannotLoadOptionsFor: 'Can not load options for field {0}',
+            pagingInfo: 'Showing {0}-{1} of {2}',
+            pageSizeChangeLabel: 'Row count',
+            gotoPageLabel: 'Go to page',
+            canNotDeletedRecords: 'Can not deleted {0} of {1} records!',
+            deleteProggress: 'Deleted {0} of {1} records, processing...'
             }
         },
 
@@ -1642,7 +1652,7 @@ THE SOFTWARE.
 
             //Localization
             messages: {
-                editRecord: 'Editar Registro'
+                editRecord: 'Edit Record'
             }
         },
 
