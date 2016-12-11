@@ -10,12 +10,12 @@ try
 
 	if($_GET["action"] == "list"){
 
-			$consulta =	"SELECT id_asignatura,codigo, descripcion FROM asignatura";
+			$consulta =	"SELECT DISTINCT asi.id_asignatura, asi.codigo, asi.descripcion FROM asignatura AS asi";
 
 			$result = mysqli_query($connect, $consulta);
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta = "SELECT id_asignatura,codigo, descripcion FROM asignatura
+			$consulta = "SELECT DISTINCT asi.id_asignatura, asi.codigo, asi.descripcion FROM asignatura AS asi
 					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);

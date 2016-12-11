@@ -221,10 +221,7 @@ type:
 	/*
 	PDF: START
 	*/
-
-
-	function pdf($id, $method){
-		require('pdf/tfpdf.php');
+	require_once('pdf/tfpdf.php');
 		class PDF extends tFPDF
 		{
 			// Cabecera de página
@@ -264,6 +261,8 @@ type:
 			    $this->Cell(0,6," Creado: $today[mday] - $today[mon] - $today[year]",0,1,'R', false);
 			}
 		}
+
+	function pdf($id, $method){
 		$conn = connectDB();
 		$result = getNotasAlumno($conn, $id);
 		$pdf = new PDF();
@@ -282,6 +281,9 @@ type:
 		if ($method == 'download') {
 			# code...
 			$pdf->Output('notas.pdf', 'D');
+		}
+		elseif ($method == 'view') {
+			$pdf->Output();	
 		}
 		else{
 			$pdfdoc = $pdf->Output('', 'S');
@@ -315,6 +317,6 @@ type:
 		$result = select($conn, 'id_persona as id, email, nombre, apellidos', 'persona', 'dni = "'.$dni.'" LIMIT 1');
 		$row = mysqli_fetch_array($result);
 
-		return $row; 
+		return $row;
 	}
 ?>

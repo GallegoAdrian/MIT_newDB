@@ -42,8 +42,8 @@ require('../functions.php');
 	<!--JTABLES: end-->
 </head>
 <body>
-	
-	<?php 
+
+	<?php
 	getHeader('../');
 	?>
 	<main id="general" class="cd-main-content">
@@ -61,7 +61,7 @@ require('../functions.php');
 </body>
 <script type="text/javascript">
 	$(document).ready(function () {
-		
+
 		$('#PeopleTableContainer').jtable({
 			//title: 'Tabla de Alumnos',
 			paging: true,
@@ -80,14 +80,13 @@ require('../functions.php');
 					key: true,
 					list: false
 				},
-								alumnos: {
+				alumnos: {
 					title: '',
 					width: '1%',
 					sorting: false,
 					edit: false,
 					create: false,
 					display: function (staffData) {
-
 					//Create an image that will be used to open child table
 							var $img = $('<img class="child-opener-image" src="../images/list_metro.png" title="Ver las asignaturas" />');
 							//Open child table when user clicks the image
@@ -109,44 +108,44 @@ require('../functions.php');
 										fields: {
 											id_grado: {
 												defaultValue:staffData.record.id_grado,
-												list:false,
+												list: false,
 												edit: false,
-												create:false
+												create: false
 											},
 											id_alumno:{
 												key: true,
 												options: 'actionsUnGrado.php?action=getAlumnoId',
-												list:false,
+												list: false,
 												edit: true,
-												create:true
+												create: true
 											},
 											nombre: {
 												title: 'Nombre',
 												width: '20%',
-												list:true,
+												list: true,
 												edit: true,
-												create:false
+												create: false
 											},
 											apellidos: {
 												title: 'Apellidos',
 												width: '30%',
-												list:true,
+												list: true,
 												edit: true,
-												create:false
+												create: false
 											},
 											curso_esc: {
 												title: 'Curso',
 												width: '10%',
-												list:true,
+												list: true,
 												edit: true,
-												create:false
+												create: false
 											},
 											baixa: {
 												title: 'Baixa',
 												width: '10%',
-												list:true,
+												list: true,
 												edit: true,
-												create:false
+												create: false
 											}
 										}
 									}, function (data) { //opened handler
@@ -161,7 +160,7 @@ require('../functions.php');
 					title: 'Nombre',
 					width: '30%',
 					edit: true,
-					create:true
+					create: true
 				},
 				duracion: {
 					title: 'Duración',

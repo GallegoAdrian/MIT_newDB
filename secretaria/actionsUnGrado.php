@@ -84,7 +84,7 @@ try
 	}
 	else if($_GET["action"] == "getAlumnoId"){
 
-			$consulta = "SELECT alu.id_alumno, per.nombre FROM persona AS per,alumno AS alu WHERE alu.id_alumno = per.id_persona";
+			$consulta = "SELECT alu.id_alumno, per.nombre, per.apellidos FROM persona AS per,alumno AS alu WHERE alu.id_alumno = per.id_persona";
 
 			$result = mysqli_query($connect, $consulta);
 
@@ -92,7 +92,7 @@ try
 
 			while($row = mysqli_fetch_array($result)){
 				$arr = array();
-				$arr['DisplayText'] = $row['nombre'];
+				$arr['DisplayText'] = $row['apellidos'].", ".$row['nombre'];
 				$arr['Value'] = $row['id_alumno'];
 				$rows[] = $arr;
 			}
