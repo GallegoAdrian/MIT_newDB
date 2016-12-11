@@ -29,7 +29,8 @@ require('../functions.php');
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link href="../css/styleLoginPage.css" rel="stylesheet" type="text/css" type="text/css">
 	<link href="../css/styleTableAndMenu.css" rel="stylesheet" type="text/css" >
-	
+	<link href="../css/styleHome.css" rel="stylesheet" type="text/css" >
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
     
@@ -42,65 +43,47 @@ require('../functions.php');
 	<!--JTABLES: end-->	
 </head>
 <body>
-
-	<?php
+	
+	<?php 
 	getHeader('../');
 	?>
 	<div id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Tabla de Notas</h1>
-			<div id="PeopleTableContainer"></div>
+			<h1 class="page-header">Inicio</h1>
+				<div class="comming-events">
+					<a href="https://www.raspberrypi.org/" target="_blank"><img src="../images/raspberry.jpg" height="100%" width="100%">
+					<h2>Evento Dia 19 de Diciembre 2016</h2>
+					<span>Taller con Raspberry Pi trae a la familia y amigos !</span>
+					<p>Onhanger freehold bromargyrite yperite ravel paniscus anis 
+						weathering disemplane wirr 
+						raconid presubjection skeenyie themsel resolute 
+						viewable birn springworm bafflingness songstress bromethylene. 
+						</p></a>
+				</div>
+				<div class="recommend-courses">
+					<a href="https://www.edx.org/school/mitx" target="_blank"><img src="../images/learn.jpg" height="185px" width="100%">
+					<h2>MITx</h2>
+					<span>Free online courses from Massachusetts Institute of Technology</span></a>
+				</div>
+				<div class="magazine">
+					<a href="https://www.technologyreview.com" target="_blank"><img src="../images/review.jpg" height="145px" width="100%"></a>
+				</div>
+				<div class="facebook">
+					<a href="https://www.facebook.com/MITnews" target="_blank"><img src="../images/facebook.png" height="145px" width="100%"></a>
+				</div>
+				<div class="twitter">
+					<a href="https://twitter.com/MIT" target="_blank"><img src="../images/twitter.png" height="145px" width="100%"></a>
+				</div>
+				<div class="youtube">
+					<a href="https://www.youtube.com/mit" target="_blank"><img src="../images/youtube2.png" height="145px" width="100%"></a>
+				</div>
 		</section>
 	</div>
 	<?php
+	header ('Content-type: text/html; charset=utf-8');
 		$connect = connectDB();
 		getMenu(1, $connect);
-		footer();
+		footer('../');
 	?>
 </body>
-<script type="text/javascript">
-		$(document).ready(function () {
-
-			$('#PeopleTableContainer').jtable({
-				messages: spanishMessages,
-				title: 'Tabla de tus notas',
-				paging: true,
-				pageSize: 2,
-				sorting: true,
-				defaultSorting: 'descripcion ASC',
-				actions: {
-					listAction: 'actions.php?action=list',
-				},
-				fields: {
-					id_alumno: {
-						key: true,
-						create: false,
-						edit: false,
-						list: false
-					},
-					descripcion: {
-						title: 'Descripción',
-						width: '40%'
-					},
-					curso_esc: {
-						title: 'Curso escolar',
-						width: '20%'
-					},
-					convoc: {
-						title: 'Convocatoria',
-						width: '20%'
-					},
-					nota: {
-						title: 'Nota',
-						width: '20%'
-					}
-				}
-			});
-
-			//Load person list from server
-			$('#PeopleTableContainer').jtable('load');
-
-		});
-
-	</script>
 </html>

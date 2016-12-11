@@ -1,11 +1,12 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 session_start();
 if(!isset($_SESSION["username"])){
   header("location:../");
 }
 
-if($_SESSION["user_type"] == "alumno"){
-  header("location:../alumno/");
+if($_SESSION["user_type"] == "profesor"){
+  header("location:../profesor/");
 }
 
 if($_SESSION["user_type"] == "coordinador"){
@@ -17,14 +18,11 @@ if($_SESSION["user_type"] == "secretaria"){
 }
 
 require('../functions.php');
-$connect = connectDB();
-$asignatura = getAsignatura($_GET['a'], $connect);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Impartidas</title>
+	<title>Alumno</title>
 	<meta charset="UTF-8">
 	
 	<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
@@ -36,72 +34,73 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
     
 	<!--JTABLES: start-->
-	<script src="../scripts/jquery-1.6.4.min.js"></script>
 	<link href="../themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="../scripts/jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
-	<!--JTABLES: end-->
-    
+	<!--JTABLES: end-->	
 </head>
 <body>
-	<?php 
+
+	<?php
 	getHeader('../');
 	?>
 	<div id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Asignatura impartiendo: <?=$asignatura['descripcion']?></h1>
+			<h1 class="page-header">Tabla de Notas</h1>
 			<div id="PeopleTableContainer"></div>
 		</section>
 	</div>
 	<?php
-		getMenu(2, $connect);
-		echo $_SESSION['type'];
+		$connect = connectDB();
+		getMenu(1, $connect);
 		footer('../');
 	?>
 </body>
 <script type="text/javascript">
-	$(document).ready(function () {
-		var materia = '<?=$asignatura['codigo']?>';
-		
-		$('#PeopleTableContainer').jtable({
-			messages: spanishMessages,
-			title: 'Tabla de Alumnos',
-			paging: true,
-			pageSize: 2,
-			sorting: true,
-			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
-			defaultSorting: 'nombre ASC',
-			actions: {
-				listAction: 'actions.php?action=list&materia='+materia,
-				updateAction: 'actions.php?action=update&materia='+materia
-			},
-			fields: {
-				id_alumno: {
-					key: true,
-					list: false
+		$(document).ready(function () {
+
+			$('#PeopleTableContainer').jtable({
+				messages: spanishMessages,
+				title: 'Tabla de tus notas',
+				paging: true,
+				pageSize: 2,
+				sorting: true,
+				defaultSorting: 'descripcion ASC',
+				actions: {
+					listAction: 'actions.php?action=list',
 				},
-				nombre: {
-					title: 'Nombre',
-					width: '20%',
-					edit: false
-				},
-				apellidos: {
-					title: 'Apellido',
-					width: '20%',
-					edit: false
-				},
-				nota: {
-					title: 'Nota',
-					width: '20%'
+				fields: {
+					id_alumno: {
+						key: true,
+						create: false,
+						edit: false,
+						list: false
+					},
+					descripcion: {
+						title: 'Descripción',
+						width: '40%'
+					},
+					curso_esc: {
+						title: 'Curso escolar',
+						width: '20%'
+					},
+					convoc: {
+						title: 'Convocatoria',
+						width: '20%'
+					},
+					nota: {
+						title: 'Nota',
+						width: '20%'
+					}
 				}
-			}
+			});
+
+			//Load person list from server
+			$('#PeopleTableContainer').jtable('load');
+
 		});
 
-		//Load person list from server
-		$('#PeopleTableContainer').jtable('load');
-
-		});
-</script>
+	</script>
 </html>

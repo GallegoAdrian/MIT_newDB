@@ -58,7 +58,7 @@ require('../functions.php');
 	header ('Content-type: text/html; charset=utf-8');
 		$connect = connectDB();
 		getMenu(4, $connect);
-		footer();
+		footer('../');
 	?>
 </body>
 <script type="text/javascript">

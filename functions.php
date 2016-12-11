@@ -121,8 +121,12 @@ function getHeader($ruta = null){
 	}
 }
 //Retorna el footer
-function footer(){
-	echo "<footer><div style='float: left; text-align: left;'><p id='alumne'>Alumne: llorens.anna / 46258585M</p><p id='profesor'>Professor: gomez.eva / 21111222A</p><p id='coordinador'>Coordinador: cifuentes.agapito / 55777666A</p><p id='secretaria'>Secretaria: god / god</p></div><span> © MIT, 2016-2017</span></footer>";
+function footer($ruta = null){
+	if ($ruta == null) {
+		echo "<footer><div style='float: left; text-align: left;'><p id='alumne'>Alumne: llorens.anna / 46258585M</p><p id='profesor'>Professor: gomez.eva / 21111222A</p><p id='coordinador'>Coordinador: cifuentes.agapito / 55777666A</p><p id='secretaria'>Secretaria: god / god</p></div><span> © MIT, 2016-2017</span></footer>";
+	}else{
+		echo "<footer><span> © MIT, 2016-2017</span></footer>";
+	}
 }
 /*
 type:

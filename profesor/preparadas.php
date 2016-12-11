@@ -56,7 +56,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	</div>
 	<?php
 		getMenu(2, $connect);
-		footer();
+		footer('../');
 	?>
 </body>
 </html>
