@@ -52,6 +52,10 @@ footer{
 	z-index: 2;
 }
 
+footer p{
+	margin:0;
+}
+
 footer span{
 	font-weight: 700;
 }
@@ -59,6 +63,10 @@ footer span{
 input, textarea {
 	font-size: 22px;
 	width: 100%;
+}
+
+.alert{
+	margin-bottom: 0;
 }
 
 .form-control{

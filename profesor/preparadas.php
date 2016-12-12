@@ -51,13 +51,12 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 	?>
 	<div id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Asignatura impartida: <?=$asignatura['descripcion']?></h1>
+			<h1 class="page-header">Asignatura preparada: <?=$asignatura['descripcion']?></h1>
 		</section>
 	</div>
 	<?php
 		getMenu(2, $connect);
-		echo $_SESSION['type'];
-		footer();
+		footer('../');
 	?>
 </body>
 </html>

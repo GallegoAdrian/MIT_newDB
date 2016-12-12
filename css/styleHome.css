@@ -1,0 +1,68 @@
+.comming-events{
+	float: left;
+	width: 32.444%;
+	height: 100%;
+	background-color: #fff;
+	margin-right: 15px;
+	/*box-shadow: 0 0 5px rgba(0,0,0,.5);*/
+}
+
+.comming-events > a h2{
+	font-size: x-large;
+	font-weight: bold;
+}
+
+.comming-events > a span,h2,p{
+	padding: 15px;
+	color: #000;
+}
+
+.recommend-courses{
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	background-color: #fff;
+	float: left;
+	/* width: 62.5%; */
+	width: 65.1%;
+	/*width: calc(100% - 417.3px);*/
+}
+
+.recommend-courses > a h2{
+	font-size: x-large;
+	font-weight: bold;
+}
+
+.recommend-courses > a span,h2{
+	padding: 15px;
+	color: #000;
+}
+
+.magazine{
+	position: relative;
+	float: left;
+	width: 32%;
+}
+
+.facebook{
+	background-color: #29487d;
+	margin-left: 15px;
+	position: relative;
+	float: left;
+	width: 9.81%;
+}
+
+.twitter{
+	background-color: #1da1f2;
+	margin-left: 15px;
+	position: relative;
+	float: left;
+	width: 9.81%;
+}
+
+.youtube{
+	background-color: #e62117;
+	margin-left: 15px;
+	position: relative;
+	float: left;
+    width: 9.81%;
+}

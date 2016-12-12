@@ -56,7 +56,7 @@ require('../functions.php');
 	header ('Content-type: text/html; charset=utf-8');
 		$connect = connectDB();
 		getMenu(4, $connect);
-		footer();
+		footer('../');
 	?>
 </body>
 <script type="text/javascript">
@@ -93,7 +93,32 @@ require('../functions.php');
 					width: '20%',
 					edit: true,
 					create: true
-				}
+				},
+				excel: {
+					title: '',
+					width: '0.1%',
+					sorting: false,
+					edit: false,
+					create: false,
+					display: function (staffData) {
+						var $img = $('<img class="child-opener-image" src="../images/csv2.png" title="Descargar CSV" />');
+							$img.click(function () {
+								$.ajax({
+									type: "POST",
+									url: "dataToExportCSV.php",
+									data: { asignaturaID: staffData.record.id_asignatura,
+											codigo: staffData.record.codigo
+											},
+									cache: false,
+									success:function(data) {
+									//console.log(data);
+									window.open('downloadCSV.php?data='+data);
+									}
+								});
+							});
+						return $img;
+					}
+				},
 			}
 		});
 
@@ -101,5 +126,6 @@ require('../functions.php');
 		$('#PeopleTableContainer').jtable('load');
 
 		});
+
 </script>
 </html>

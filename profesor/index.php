@@ -29,6 +29,7 @@ require('../functions.php');
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link href="../css/styleLoginPage.css" rel="stylesheet" type="text/css" type="text/css">
 	<link href="../css/styleTableAndMenu.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleHome.css" rel="stylesheet" type="text/css" >
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
@@ -38,7 +39,6 @@ require('../functions.php');
 	<link href="../scripts/jtable/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
     <script src="../scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
-    <script src="../scripts/jtable/location/jquery.jtable.spanish.js" type="text/javascript"></script>
 	<!--JTABLES: end-->
 </head>
 <body>
@@ -48,29 +48,40 @@ require('../functions.php');
 	?>
 	<main id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Tabla de Notas</h1>
-			<div id="PeopleTableContainer"></div>
-			<?php 
-			header ('Content-type: text/html; charset=utf-8');
-				$connect = connectDB();
-				$result = getAsignaturasP($_SESSION["username"], $connect);
-				echo '<h2>Preparadas</h2>';
-				foreach ($result as $asignaturas) {
-					echo '<div class="asig"><a href="preparadas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></div>';
-				}
-				echo '<h2>Impartidas</h2>';
-				$result = getAsignaturasI($_SESSION["username"], $connect);
-				foreach ($result as $asignaturas) {
-					echo '<div class="asig"><a href="impartidas.php?a='.$asignaturas['codigo'].'">'.$asignaturas['asignatura'].'</a></div>';
-				}
-
-			?>
+				<div class="comming-events">
+					<a href="https://www.raspberrypi.org/" target="_blank"><img src="../images/raspberry.jpg" height="100%" width="100%">
+					<h2>Evento Dia 19 de Diciembre 2016</h2>
+					<span>Taller Raspberry Pi trae a la familia y amigos!</span>
+					<p>Onhanger freehold bromargyrite yperite ravel paniscus anis 
+						weathering disemplane wirr 
+						raconid presubjection skeenyie themsel resolute 
+						viewable birn springworm bafflingness. 
+						</p></a>
+				</div>
+				<div class="recommend-courses">
+					<a href="https://www.edx.org/school/mitx" target="_blank"><img src="../images/learn.jpg" height="175px" width="100%">
+					<h2>MITx</h2>
+					<span>Free online courses from Massachusetts Institute of Technology</span></a>
+				</div>
+				<div class="magazine">
+					<a href="https://www.technologyreview.com" target="_blank"><img src="../images/review.jpg" height="139px" width="100%"></a>
+				</div>
+				<div class="facebook">
+					<a href="https://www.facebook.com/MITnews" target="_blank"><img src="../images/facebook.png" height="135px" width="100%"></a>
+				</div>
+				<div class="twitter">
+					<a href="https://twitter.com/MIT" target="_blank"><img src="../images/twitter.png" height="135px" width="100%"></a>
+				</div>
+				<div class="youtube">
+					<a href="https://www.youtube.com/mit" target="_blank"><img src="../images/youtube2.png" height="135px" width="100%"></a>
+				</div>
 		</section>
 	</main>
 	<?php
+	$connect = connectDB();
 	header ('Content-type: text/html; charset=utf-8');
 		getMenu(2, $connect);
-		footer();
+		footer('../');
 	?>
 </body>
 </html>
