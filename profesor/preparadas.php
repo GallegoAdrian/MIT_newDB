@@ -25,6 +25,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 <html lang="en">
 <head>
 	<title>Preparadas</title>
+	<link rel="icon" type="image/png" href="../images/mit.ico"/>
 	<meta charset="UTF-8">
 	
 	<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
