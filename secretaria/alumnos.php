@@ -292,6 +292,7 @@ var dni = [];
 	        cache: false,
 	        success: function(response){
 	            alert('sent!');
+	            console.log(response);
 	        }
 	    });
 	}

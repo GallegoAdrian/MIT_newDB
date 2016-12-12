@@ -7,14 +7,14 @@ if (isset($_POST)) {
 
 	$m = new PHPMailer;
 
-	//$m->isSMTP();
+	$m->isSMTP();
 	$m->SMTPAuth = true;
 	$m->SMTPDebug = 2;
 
 	$m->Host = 'smtp.gmail.com';
 	$m->Username = 'webmonkeypd@gmail.com';
 	$m->Password = 'piZzarra1617';
-	$m->SMTPSecure = 'tls';
+	$m->SMTPSecure = 'ssl';
 	$m->Port = 465;
 
 	$m->From = 'webmonkeypd@gmail.com';
