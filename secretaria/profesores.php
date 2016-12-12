@@ -114,21 +114,19 @@ require('../functions.php');
 									messages: spanishMessages,
 									actions: {
 										listAction: 'actionsUnProfesor.php?action=list&profesorid=' + staffData.record.id_profesor,
-										// createAction: 'actionsUnProfesor.php?action=update&profesorid==' + staffData.record.id_profesor,
+										createAction: 'actionsUnProfesor.php?action=create&profesorid=' + staffData.record.id_profesor,
 										updateAction: 'actionsUnProfesor.php?action=update&profesorid=' + staffData.record.id_profesor,
 										deleteAction: 'actionsUnProfesor.php?action=delete&profesorid=' + staffData.record.id_profesor,
 										},
 									fields: {
-
-										id_profesor: {
-											defaultValue:staffData.record.id_profesor,
+										id_imparte: {
+											key: true,
 											create: false,
 											edit: false,
 											list: false
 										},
 										id_asignatura: {
 											title: 'Asignaturas',
-											key: true,
 											width: '99%',
 											options: 'actionsUnProfesor.php?action=getAssigId',
 											list:true,
