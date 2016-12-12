@@ -101,6 +101,7 @@ require('../functions.php');
 										defaultSorting: 'nombre ASC',
 										paging: true,
 										pageSize: 3,
+										messages: spanishMessages,
 										actions: {
 											listAction: 'actionsUnGrado.php?action=list&gradoid=' + staffData.record.id_grado,
 											deleteAction: 'actionsUnGrado.php?action=delete&gradoid=' + staffData.record.id_grado,
