@@ -7,14 +7,14 @@ if (isset($_POST)) {
 
 	$m = new PHPMailer;
 
-	$m->isSMTP();
+	//$m->isSMTP();
 	$m->SMTPAuth = true;
 	$m->SMTPDebug = 2;
 
 	$m->Host = 'smtp.gmail.com';
 	$m->Username = 'webmonkeypd@gmail.com';
 	$m->Password = 'piZzarra1617';
-	$m->SMTPSecure = 'ssl';
+	$m->SMTPSecure = 'tls';
 	$m->Port = 465;
 
 	$m->From = 'webmonkeypd@gmail.com';
@@ -35,7 +35,6 @@ if (isset($_POST)) {
 			echo 'email sent!';
 		}
 	}
-
 }
 
 // $m->addReplyTo('nicofviteri@gmail.com', 'Reply address');
