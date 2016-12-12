@@ -10,18 +10,22 @@ try
 
 	if($_GET["action"] == "list"){
 
-			$consulta =	"SELECT mat.id_asignatura,mat.curso_esc, mat.convoc, mat.nota, mat.baixa,gal.id_grado,mat.id_matricula, gr.id_grado 
-						FROM matricula AS mat, asignatura AS asi, grados_alumnos AS gal, grados AS gr 
-						WHERE  mat.id_asignatura = asi.id_asignatura  AND mat.id_matricula = gal.id_grd_alu AND gal.id_grado = gr.id_grado AND mat.id_alumno = '{$_GET['alumnoid']}'";
+			$consulta =	"SELECT mat.id_asignatura,mat.curso_esc, mat.convoc, mat.nota, mat.baixa,mat.id_matricula 
+						FROM matricula AS mat, asignatura AS asi, alumno AS alu
+						WHERE  mat.id_asignatura = asi.id_asignatura  
+						AND mat.id_alumno = alu.id_alumno
+						and alu.id_alumno = '{$_GET['alumnoid']}'";
 
 			$result = mysqli_query($connect, $consulta);
 
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta =	"SELECT mat.id_asignatura,mat.curso_esc, mat.convoc, mat.nota, mat.baixa,gal.id_grado,mat.id_matricula, gr.id_grado 
-						FROM matricula AS mat, asignatura AS asi, grados_alumnos AS gal, grados AS gr 
-						WHERE  mat.id_asignatura = asi.id_asignatura  AND mat.id_matricula = gal.id_grd_alu AND gal.id_grado = gr.id_grado AND mat.id_alumno = '{$_GET['alumnoid']}'
-					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
+			$consulta =	"SELECT mat.id_asignatura,mat.curso_esc, mat.convoc, mat.nota, mat.baixa,mat.id_matricula 
+						FROM matricula AS mat, asignatura AS asi, alumno AS alu
+						WHERE  mat.id_asignatura = asi.id_asignatura  
+						AND mat.id_alumno = alu.id_alumno
+						and alu.id_alumno = '{$_GET['alumnoid']}'
+						ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
 
@@ -62,9 +66,9 @@ try
 	}
 	else if($_GET["action"] == "update"){
 
-			$consulta = 'UPDATE matricula AS mat, asignatura AS asi, grados_alumnos AS gal 
+			$consulta = 'UPDATE matricula AS mat, asignatura AS asi 
 						SET mat.id_asignatura = "'.$_POST['id_asignatura'].'",mat.curso_esc = "'.$_POST['curso_esc'].'", mat.convoc = "'.$_POST['convoc'].'",mat.nota = "'.$_POST['nota'].'",mat.baixa = "'.$_POST['baixa'].'" 
-						WHERE asi.id_asignatura = mat.id_asignatura AND mat.id_alumno = gal.id_alumno AND mat.id_matricula = "'.$_POST['id_matricula'].'" AND mat.id_alumno = "' . $_GET['alumnoid'] . '"';
+						WHERE asi.id_asignatura = mat.id_asignatura AND mat.id_matricula = "'.$_POST['id_matricula'].'" AND mat.id_alumno = "' . $_GET['alumnoid'] . '"';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos

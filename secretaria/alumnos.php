@@ -146,13 +146,6 @@ var dni = [];
                     							options: { '0': 'NO', '1': 'SI' },
 												create:false
 											},
-											id_grd_alu: {
-												title: 'id_grado_alumno',
-												width: '0%',
-												list:false,
-												edit: false,
-												create:false
-											},
 											id_matricula: {
 												key: true,
 												title: 'id_matricula',
