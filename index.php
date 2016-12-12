@@ -18,7 +18,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "logout"){
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="icon" type="image/png" href="imges/mit.ico"/>
+    <link rel="icon" type="image/png" href="images/mit.ico"/>
     <script src="js/jquery-1.12.3.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
