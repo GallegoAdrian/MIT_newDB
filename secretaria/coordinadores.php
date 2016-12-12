@@ -67,7 +67,7 @@ require('../functions.php');
 			messages: spanishMessages,
 			//title: 'Tabla de Profesores',
 			paging: true,
-			pageSize: 3,
+			pageSize: 15,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',

@@ -58,14 +58,14 @@ var dni = [];
 			messages: spanishMessages,
 			//title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 5,
+			pageSize: 15,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
 			selecting: true, //Enable selecting
             multiselect: true, //Allow multiple selecting
             selectingCheckboxes: true, //Show checkboxes on first column
-            //selectOnRowClick: false, //Enable this to only select using checkboxes
+            selectOnRowClick: false, //Enable this to only select using checkboxes
 			actions: {
 				listAction:   'actionsAlumnos.php?action=list',
 				updateAction: 'actionsAlumnos.php?action=update',
@@ -292,6 +292,7 @@ var dni = [];
 	        cache: false,
 	        success: function(response){
 	            alert('sent!');
+	            console.log(response);
 	        }
 	    });
 	}
