@@ -69,7 +69,7 @@ require('../functions.php');
 			messages: spanishMessages,
 			//title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 3,
+			pageSize: 15,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
