@@ -110,18 +110,17 @@ require('../functions.php');
 											createAction: 'actionsUnGrado.php?action=create&gradoid=' + staffData.record.id_grado,
 											},
 										fields: {
-											id_grado: {
-												defaultValue:staffData.record.id_grado,
+											id_grd_alu: {
+												key: true,
 												list: false,
 												edit: false,
 												create: false
 											},
 											id_alumno:{
-												key: true,
 												options: 'actionsUnGrado.php?action=getAlumnoId',
 												list: false,
-												edit: true,
-												create: true
+												edit: false,
+												create:true
 											},
 											nombre: {
 												title: 'Nombre',

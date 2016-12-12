@@ -52,10 +52,10 @@ try
 			mysqli_close($connect);
 
 	}else if($_GET["action"] == "delete"){
-			// $_POST['id_asignatura']=3;
+
 			$consulta = 'DELETE FROM imparte WHERE imparte.id_imparte = "'.$_POST['id_imparte'].'"';
 			$result = mysqli_query($connect, $consulta);
-			//imprimirlos
+
 			$jTableResult = array();
 			$jTableResult['Result'] = "OK";
 			print json_encode($jTableResult);
