@@ -110,6 +110,7 @@ require('../functions.php');
 									defaultSorting: 'codigo ASC',
 									paging: true,
 									pageSize: 3,
+									messages: spanishMessages,
 									actions: {
 										listAction: 'actionsUnProfesor.php?action=list&profesorid=' + staffData.record.id_profesor,
 										// createAction: 'actionsUnProfesor.php?action=update&profesorid==' + staffData.record.id_profesor,

@@ -92,6 +92,7 @@ var dni = [];
 									{
 										title: 'Asignaturas '+staffData.record.nombre+' '+staffData.record.apellidos,
 										sorting: true,
+										messages: spanishMessages,
 										defaultSorting: 'id_asignatura ASC',
 										paging: true,
 										pageSize: 3,
