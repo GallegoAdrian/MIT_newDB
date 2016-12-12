@@ -68,7 +68,7 @@ require('../functions.php');
 			messages: spanishMessages,
 			//title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 15,
+			pageSize: 10,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
@@ -99,7 +99,7 @@ require('../functions.php');
 									{
 										title: 'Grados '+staffData.record.nombre,
 										sorting: true,
-										defaultSorting: 'nombre ASC',
+										defaultSorting: 'apellidos ASC',
 										paging: true,
 										pageSize: 3,
 										messages: spanishMessages,

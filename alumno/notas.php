@@ -66,7 +66,7 @@ require('../functions.php');
 				messages: spanishMessages,
 				title: 'Tabla de tus notas',
 				paging: true,
-				pageSize: 15,
+				pageSize: 10,
 				sorting: true,
 				defaultSorting: 'descripcion ASC',
 				actions: {

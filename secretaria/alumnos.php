@@ -58,7 +58,7 @@ var dni = [];
 			messages: spanishMessages,
 			//title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 15,
+			pageSize: 10,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
