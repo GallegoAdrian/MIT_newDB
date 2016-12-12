@@ -23,7 +23,7 @@ require('../functions.php');
 <html lang="en">
 <head>
 	<title>Profesor</title>
-	<link rel="icon" type="image/png" href="images/mit.ico"/>
+	<link rel="icon" type="image/png" href="../images/mit.ico"/>
 	<meta charset="UTF-8">
 	
 	<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
