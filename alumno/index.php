@@ -49,33 +49,32 @@ require('../functions.php');
 	?>
 	<div id="general" class="cd-main-content">
 		<section class="profile-content" >
-			<h1 class="page-header">Inicio</h1>
 				<div class="comming-events">
 					<a href="https://www.raspberrypi.org/" target="_blank"><img src="../images/raspberry.jpg" height="100%" width="100%">
 					<h2>Evento Dia 19 de Diciembre 2016</h2>
-					<span>Taller con Raspberry Pi trae a la familia y amigos !</span>
+					<span>Taller Raspberry Pi trae a la familia y amigos!</span>
 					<p>Onhanger freehold bromargyrite yperite ravel paniscus anis 
 						weathering disemplane wirr 
 						raconid presubjection skeenyie themsel resolute 
-						viewable birn springworm bafflingness songstress bromethylene. 
+						viewable birn springworm bafflingness. 
 						</p></a>
 				</div>
 				<div class="recommend-courses">
-					<a href="https://www.edx.org/school/mitx" target="_blank"><img src="../images/learn.jpg" height="185px" width="100%">
+					<a href="https://www.edx.org/school/mitx" target="_blank"><img src="../images/learn.jpg" height="175px" width="100%">
 					<h2>MITx</h2>
 					<span>Free online courses from Massachusetts Institute of Technology</span></a>
 				</div>
 				<div class="magazine">
-					<a href="https://www.technologyreview.com" target="_blank"><img src="../images/review.jpg" height="145px" width="100%"></a>
+					<a href="https://www.technologyreview.com" target="_blank"><img src="../images/review.jpg" height="139px" width="100%"></a>
 				</div>
 				<div class="facebook">
-					<a href="https://www.facebook.com/MITnews" target="_blank"><img src="../images/facebook.png" height="145px" width="100%"></a>
+					<a href="https://www.facebook.com/MITnews" target="_blank"><img src="../images/facebook.png" height="135px" width="100%"></a>
 				</div>
 				<div class="twitter">
-					<a href="https://twitter.com/MIT" target="_blank"><img src="../images/twitter.png" height="145px" width="100%"></a>
+					<a href="https://twitter.com/MIT" target="_blank"><img src="../images/twitter.png" height="135px" width="100%"></a>
 				</div>
 				<div class="youtube">
-					<a href="https://www.youtube.com/mit" target="_blank"><img src="../images/youtube2.png" height="145px" width="100%"></a>
+					<a href="https://www.youtube.com/mit" target="_blank"><img src="../images/youtube2.png" height="135px" width="100%"></a>
 				</div>
 		</section>
 	</div>

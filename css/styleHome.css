@@ -3,6 +3,7 @@
 	width: 32.444%;
 	height: 100%;
 	background-color: #fff;
+	margin-right: 15px;
 	/*box-shadow: 0 0 5px rgba(0,0,0,.5);*/
 }
 
@@ -21,8 +22,9 @@
 	margin-bottom: 15px;
 	background-color: #fff;
 	float: left;
-	width: 62.5%;
-	margin-left: 15px;
+	/* width: 62.5%; */
+	width: 65.1%;
+	/*width: calc(100% - 417.3px);*/
 }
 
 .recommend-courses > a h2{
@@ -36,10 +38,9 @@
 }
 
 .magazine{
-	margin-left: 15px;
 	position: relative;
 	float: left;
-	width: 30%;
+	width: 32%;
 }
 
 .facebook{
