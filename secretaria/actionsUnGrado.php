@@ -10,7 +10,7 @@ try
 
 	if($_GET["action"] == "list"){
 
-			$consulta =	"SELECT gra.id_grado, per.nombre, per.apellidos, gal.curso_esc,gal.baixa, alu.id_alumno 
+			$consulta =	"SELECT gal.id_grd_alu, per.nombre, per.apellidos, gal.curso_esc,gal.baixa, alu.id_alumno 
 							FROM persona AS per, alumno AS alu, grados_alumnos AS gal, grados AS gra 
 							WHERE per.id_persona = alu.id_alumno AND alu.id_alumno = gal.id_alumno AND gal.id_grado = gra.id_grado AND gra.id_grado = '{$_GET['gradoid']}'";
 
@@ -18,7 +18,7 @@ try
 
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta =	"SELECT gra.id_grado, per.nombre, per.apellidos, gal.curso_esc,gal.baixa, alu.id_alumno 
+			$consulta =	"SELECT gal.id_grd_alu, per.nombre, per.apellidos, gal.curso_esc,gal.baixa, alu.id_alumno 
 							FROM persona AS per, alumno AS alu, grados_alumnos AS gal, grados AS gra 
 							WHERE per.id_persona = alu.id_alumno AND alu.id_alumno = gal.id_alumno AND gal.id_grado = gra.id_grado AND gra.id_grado = '{$_GET['gradoid']}'
 					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
@@ -43,10 +43,10 @@ try
 	else if($_GET["action"] == "update"){
 
 			$consulta = 'UPDATE persona AS per, alumno AS alu, grados_alumnos AS gal, grados AS gra
-						SET per.nombre = "'.$_POST['nombre'].'", gal.curso_esc = "'.$_POST['curso_esc'].'", 
+						SET per.nombre = "'.$_POST['nombre'].'",per.apellidos = "'.$_POST['apellidos'].'", gal.curso_esc = "'.$_POST['curso_esc'].'", 
 						gal.baixa = "'.$_POST['baixa'].'"
 						WHERE per.id_persona = alu.id_alumno AND alu.id_alumno = gal.id_alumno AND gal.id_grado = gra.id_grado 
-						AND gra.id_grado = "'.$_GET['gradoid'].'" AND alu.id_alumno = "'.$_POST['id_alumno'].'"';
+						AND gal.id_grd_alu = "'.$_POST['id_grd_alu'].'"';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos
@@ -57,7 +57,7 @@ try
 
 	}else if($_GET["action"] == "delete"){
 
-			$consulta = 'DELETE FROM grados_alumnos WHERE grados_alumnos.id_alumno = "'.$_POST['id_alumno'].'" AND grados_alumnos.id_grado = "'.$_GET['gradoid'].'"';
+			$consulta = 'DELETE FROM grados_alumnos WHERE grados_alumnos.id_grd_alu = "'.$_POST['id_grd_alu'].'"';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos
@@ -68,23 +68,38 @@ try
 	}
 	else if($_GET["action"] == "create"){
 
-			$consulta = "INSERT INTO grados_alumnos(id_alumno,id_grado,curso_esc ,baixa) 
-						 VALUES('" . $_POST["id_alumno"] . "','" . $_GET["gradoid"] . "','16-17','0' );";
+			$consulta = "SELECT gal.id_alumno FROM grados_alumnos AS gal WHERE gal.id_alumno = '".$_POST["id_alumno"]."' AND gal.id_grado = '".$_GET["gradoid"]."'";
 
 			$result = mysqli_query($connect, $consulta);
+			$numRow = mysqli_num_rows($result);
 
-			$result = mysqli_query($connect, "SELECT * FROM grados_alumnos WHERE id_grd_alu  = LAST_INSERT_ID();");
-			$row = mysqli_fetch_array($result);
+			if($numRow == 0){
 
-			$jTableResult = array();
-			$jTableResult['Result'] = "OK";
-			$jTableResult['Record'] = $row;
-			print json_encode($jTableResult);
-			mysqli_close($connect);
+					$consulta = "INSERT INTO grados_alumnos(id_alumno,id_grado,curso_esc ,baixa) 
+								 VALUES('" . $_POST["id_alumno"] . "','" . $_GET["gradoid"] . "','16-17','0' );";
+
+					$result = mysqli_query($connect, $consulta);
+
+					$result = mysqli_query($connect, "SELECT * FROM grados_alumnos WHERE id_grd_alu  = LAST_INSERT_ID();");
+					$row = mysqli_fetch_array($result);
+
+					$jTableResult = array();
+					$jTableResult['Result'] = "OK";
+					$jTableResult['Record'] = $row;
+					print json_encode($jTableResult);
+					mysqli_close($connect);
+			}else{
+					$jTableResult = array();
+					$jTableResult['Result'] = "ERROR";
+					$jTableResult['Message'] = 'Este alumno ya pertenece al grado.';
+					print json_encode($jTableResult);
+					mysqli_close($connect);
+			}
 	}
 	else if($_GET["action"] == "getAlumnoId"){
 
-			$consulta = "SELECT alu.id_alumno, per.nombre, per.apellidos FROM persona AS per,alumno AS alu WHERE alu.id_alumno = per.id_persona";
+			$consulta = "SELECT alu.id_alumno, per.nombre, per.apellidos FROM persona AS per,alumno AS alu WHERE alu.id_alumno = per.id_persona
+			ORDER BY per.apellidos ASC";
 
 			$result = mysqli_query($connect, $consulta);
 

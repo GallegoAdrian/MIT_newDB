@@ -82,6 +82,15 @@ input[type="checkbox"]{
   width: 40px;
 }
 
+#mail{
+  margin-top: 20px;
+    border: 0;
+    padding: 13px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #2a363b;
+}
+
 /*.jtable-title{
   display: none;
 }*/

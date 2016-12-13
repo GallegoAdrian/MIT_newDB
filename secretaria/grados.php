@@ -68,7 +68,7 @@ require('../functions.php');
 			messages: spanishMessages,
 			//title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 15,
+			pageSize: 10,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
@@ -99,7 +99,7 @@ require('../functions.php');
 									{
 										title: 'Grados '+staffData.record.nombre,
 										sorting: true,
-										defaultSorting: 'nombre ASC',
+										defaultSorting: 'apellidos ASC',
 										paging: true,
 										pageSize: 3,
 										messages: spanishMessages,
@@ -110,18 +110,17 @@ require('../functions.php');
 											createAction: 'actionsUnGrado.php?action=create&gradoid=' + staffData.record.id_grado,
 											},
 										fields: {
-											id_grado: {
-												defaultValue:staffData.record.id_grado,
+											id_grd_alu: {
+												key: true,
 												list: false,
 												edit: false,
 												create: false
 											},
 											id_alumno:{
-												key: true,
 												options: 'actionsUnGrado.php?action=getAlumnoId',
 												list: false,
-												edit: true,
-												create: true
+												edit: false,
+												create:true
 											},
 											nombre: {
 												title: 'Nombre',

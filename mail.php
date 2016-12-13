@@ -35,7 +35,6 @@ if (isset($_POST)) {
 			echo 'email sent!';
 		}
 	}
-
 }
 
 // $m->addReplyTo('nicofviteri@gmail.com', 'Reply address');

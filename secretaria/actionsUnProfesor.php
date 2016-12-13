@@ -52,10 +52,10 @@ try
 			mysqli_close($connect);
 
 	}else if($_GET["action"] == "delete"){
-			// $_POST['id_asignatura']=3;
+
 			$consulta = 'DELETE FROM imparte WHERE imparte.id_imparte = "'.$_POST['id_imparte'].'"';
 			$result = mysqli_query($connect, $consulta);
-			//imprimirlos
+
 			$jTableResult = array();
 			$jTableResult['Result'] = "OK";
 			print json_encode($jTableResult);
@@ -63,19 +63,34 @@ try
 	}
 	else if($_GET["action"] == "create"){
 
-			$consulta = "INSERT INTO imparte(id_profesor,id_asignatura) 
-						 VALUES('" . $_GET["profesorid"] . "','" . $_POST["id_asignatura"] . "' );";
+			$consulta = "SELECT im.id_imparte FROM imparte AS im WHERE im.id_asignatura = '".$_POST["id_asignatura"]."' AND im.id_profesor = '".$_GET["profesorid"]."'";
 
 			$result = mysqli_query($connect, $consulta);
+			$numRow = mysqli_num_rows($result);
 
-			$result = mysqli_query($connect, "SELECT * FROM imparte WHERE id_imparte  = LAST_INSERT_ID();");
-			$row = mysqli_fetch_array($result);
+			if($numRow == 0){
 
-			$jTableResult = array();
-			$jTableResult['Result'] = "OK";
-			$jTableResult['Record'] = $row;
-			print json_encode($jTableResult);
-			mysqli_close($connect);
+				$consulta = "INSERT INTO imparte(id_profesor,id_asignatura) 
+							 VALUES('" . $_GET["profesorid"] . "','" . $_POST["id_asignatura"] . "' );";
+
+				$result = mysqli_query($connect, $consulta);
+
+				$result = mysqli_query($connect, "SELECT * FROM imparte WHERE id_imparte  = LAST_INSERT_ID();");
+				$row = mysqli_fetch_array($result);
+
+				$jTableResult = array();
+				$jTableResult['Result'] = "OK";
+				$jTableResult['Record'] = $row;
+				print json_encode($jTableResult);
+				mysqli_close($connect);
+
+			}else{
+					$jTableResult = array();
+					$jTableResult['Result'] = "ERROR";
+					$jTableResult['Message'] = 'Este profesor ya está impartiendo la asignatura.';
+					print json_encode($jTableResult);
+					mysqli_close($connect);
+			}
 
 	}
 	else if($_GET["action"] == "getAssigId"){
