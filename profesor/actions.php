@@ -49,8 +49,7 @@ try
 			//comprovar que el professor la imparte
 
 			$consulta = 'UPDATE matricula, asignatura SET matricula.nota = "'.$_POST['nota'].'" 
-						 WHERE matricula.id_asignatura = asignatura.id_asignatura 
-						 AND asignatura.codigo = "'.$_GET['materia'].'"';
+						 WHERE matricula.id_asignatura = asignatura.id_asignatura';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos

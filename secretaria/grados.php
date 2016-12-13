@@ -117,6 +117,7 @@ require('../functions.php');
 												create: false
 											},
 											id_alumno:{
+												optionsSorting: 'text',
 												options: 'actionsUnGrado.php?action=getAlumnoId',
 												list: false,
 												edit: false,

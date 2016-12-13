@@ -103,12 +103,10 @@ try
 
 			$result = mysqli_query($connect, $consulta);
 
-			$rows = array();
-
 			while($row = mysqli_fetch_array($result)){
 				$arr = array();
-				$arr['DisplayText'] = $row['apellidos'].", ".$row['nombre'];
 				$arr['Value'] = $row['id_alumno'];
+				$arr['DisplayText'] = $row['apellidos'].", ".$row['nombre']; 
 				$rows[] = $arr;
 			}
 

@@ -91,30 +91,30 @@ else if($_GET["action"] == "update"){
 
 	else if($_GET["action"] == "create"){
 			//Insert Usuario
-			$consulta = "INSERT INTO usuario(password, username, activo, id_rol) 
-						 VALUES('" . $_POST["password"] . "',
-						 	'" . $_POST["username"] . "','1','1');";
+			$consulta = 'INSERT INTO usuario(password, username, activo, id_rol) 
+						 VALUES("' . $_POST['password'] . '",
+						 	"' . $_POST['username'] . '",1,1);';
 			//Check
 			$result = mysqli_query($connect, $consulta);
 
 			//Insert persona
-			$consulta = "INSERT INTO persona(nombre, apellidos, dni, telefono, email) 
-						 VALUES('" . $_POST["nombre"] . "', 
-						 	'" . $_POST["apellidos"] . "', 
-						 	'" . $_POST["dni"] . "', 
-						 	'" . $_POST["telefono"] . "',
-						 	'" . $_POST["email"] . "');";
+			$consulta = 'INSERT INTO persona(nombre, apellidos, dni, telefono, email) 
+						 VALUES("' . $_POST['nombre'] . '", 
+						 	"' . $_POST['apellidos'] . '", 
+						 	"' . $_POST['dni'] . '", 
+						 	"' . $_POST['telefono'] . '",
+						 	"' . $_POST['email'] . '");';
 			//Check
 			$result = mysqli_query($connect, $consulta);
 
-			$result = mysqli_query($connect, "SELECT * FROM persona WHERE dni = '" . $_POST["dni"] . "'");
+			$result = mysqli_query($connect, "SELECT * FROM persona WHERE id_persona = LAST_INSERT_ID();");
 
 			$row = mysqli_fetch_array($result);
 
 			//Check
-			$consulta = "INSERT INTO alumno(id_alumno,direccion)
-						 VALUES('" . $row['id_persona'] . "',
-						 	'" . $_POST["direccion"] . "');";
+			$consulta = 'INSERT INTO alumno(id_alumno,direccion)
+						 VALUES("' . $row['id_persona'] . '",
+						 	"' . $_POST['direccion'] . '");';
 			//Check
 			$result2 = mysqli_query($connect, $consulta);
 
