@@ -41,8 +41,8 @@ try
 			//comprovar que materia existe
 			//comprovar que el professor la imparte
 
-			$consulta = "UPDATE imparte AS im SET im.id_asignatura = '".$_POST['id_asignatura']."'
-					     WHERE im.id_profesor = " . $_GET["profesorid"] . ";";
+			$consulta = 'UPDATE imparte AS im SET im.id_asignatura = "'.$_POST['id_asignatura'].'"
+					     WHERE im.id_profesor = "' . $_GET['profesorid'] . '";';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos

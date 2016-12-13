@@ -33,7 +33,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
     <link href="../css/styleLoginPage.css" rel="stylesheet" type="text/css" type="text/css">
 	<link href="../css/styleTableAndMenu.css" rel="stylesheet" type="text/css" >
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
     
 	<!--JTABLES: start-->
@@ -70,7 +70,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 			messages: spanishMessages,
 			title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 10,
+			pageSize: 5,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
@@ -79,7 +79,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 				updateAction: 'actions.php?action=update&materia='+materia
 			},
 			fields: {
-				id_alumno: {
+				id_matricula: {
 					key: true,
 					list: false
 				},

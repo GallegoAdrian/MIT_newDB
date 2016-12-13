@@ -10,42 +10,42 @@ try
 
 	if($_GET["action"] == "list"){
 
-			$consulta =	
+			$consulta =
 			"SELECT al.id_alumno,
-			per.nombre, 
-			per.apellidos, 
-			per.dni, 
-			al.direccion, 
-			per.telefono, 
-			per.email,
-			us.id_rol, 
-			us.password, 
-			us.username, 
-			us.activo
+				per.nombre,
+				per.apellidos,
+				per.dni,
+				al.direccion,
+				per.telefono,
+				per.email,
+				us.id_rol,
+				us.password,
+				us.username,
+				us.activo
 			FROM usuario AS us, persona AS per, alumno AS al
-			WHERE us.id_usuario = per.id_persona 
-			AND al.id_alumno = per.id_persona 
+			WHERE us.id_usuario = per.id_persona
+			AND al.id_alumno = per.id_persona
 			AND us.id_rol = '1'";
 
 			$result = mysqli_query($connect, $consulta);
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta = 
+			$consulta =
 			"SELECT al.id_alumno,
-			per.nombre, 
-			per.apellidos, 
-			per.dni, 
-			al.direccion, 
-			per.telefono,
-			per.email,
-			us.id_rol, 
-			us.password, 
-			us.username, 
-			us.activo
+				per.nombre,
+				per.apellidos,
+				per.dni,
+				al.direccion,
+				per.telefono,
+				per.email,
+				us.id_rol,
+				us.password,
+				us.username,
+				us.activo
 			FROM usuario AS us, persona AS per, alumno AS al
-			WHERE us.id_usuario = per.id_persona 
+			WHERE us.id_usuario = per.id_persona
 			AND al.id_alumno = per.id_persona
-			AND us.id_rol = '1' 
+			AND us.id_rol = '1'
 			ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
@@ -70,16 +70,16 @@ else if($_GET["action"] == "update"){
 			//comprovar que el professor la imparte
 
 			$consulta = 'UPDATE usuario AS us, persona AS per, alumno AS al
-							SET per.nombre = "'.$_POST['nombre'].'",
-							per.apellidos = "'.$_POST['apellidos'].'",
-							per.dni = "'.$_POST['dni'].'",
-							per.telefono = "'.$_POST['telefono'].'",
-							per.email = "'.$_POST['email'].'",
-							al.direccion = "'.$_POST['direccion'].'"
-							WHERE us.id_usuario = per.id_persona
-							AND per.id_persona = al.id_alumno
-							AND us.id_rol = 1
-							AND al.id_alumno = "'.$_POST['id_alumno'].'"';
+						SET per.nombre = "'.$_POST['nombre'].'",
+						per.apellidos = "'.$_POST['apellidos'].'",
+						per.dni = "'.$_POST['dni'].'",
+						per.telefono = "'.$_POST['telefono'].'",
+						per.email = "'.$_POST['email'].'",
+						al.direccion = "'.$_POST['direccion'].'"
+						WHERE us.id_usuario = per.id_persona
+						AND per.id_persona = al.id_alumno
+						AND us.id_rol = 1
+						AND al.id_alumno = "'.$_POST['id_alumno'].'"';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos

@@ -30,7 +30,7 @@ require('../functions.php');
     <link href="../css/styleLoginPage.css" rel="stylesheet" type="text/css" type="text/css">
 	<link href="../css/styleTableAndMenu.css" rel="stylesheet" type="text/css" >
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
     
 	<!--JTABLES: start-->
@@ -67,7 +67,7 @@ require('../functions.php');
 			messages: spanishMessages,
 			//title: 'Tabla de Profesores',
 			paging: true,
-			pageSize: 15,
+			pageSize: 5,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
@@ -95,7 +95,7 @@ require('../functions.php');
 				apellidos: {
 					title: 'Apellidos',
 					width: '20%',
-					edit: false,
+					edit: true,
 					create:true,
 					list:true
 				},

@@ -75,8 +75,8 @@ try
 
 			if($numRow == 0){
 
-					$consulta = "INSERT INTO grados_alumnos(id_alumno,id_grado,curso_esc ,baixa) 
-								 VALUES('" . $_POST["id_alumno"] . "','" . $_GET["gradoid"] . "','16-17','0' );";
+					$consulta = 'INSERT INTO grados_alumnos(id_alumno,id_grado,curso_esc ,baixa) 
+								 VALUES("' . $_POST['id_alumno'] . '","' . $_GET['gradoid'] . '",16-17,0 );';
 
 					$result = mysqli_query($connect, $consulta);
 

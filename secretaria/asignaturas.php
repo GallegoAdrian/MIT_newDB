@@ -31,7 +31,7 @@ require('../functions.php');
     <link href="../css/styleLoginPage.css" rel="stylesheet" type="text/css" type="text/css">
 	<link href="../css/styleTableAndMenu.css" rel="stylesheet" type="text/css" >
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
 	<!--JTABLES: start-->
     <script src="../scripts/jquery-1.6.4.min.js"></script>
@@ -67,7 +67,7 @@ require('../functions.php');
 			messages: spanishMessages,
 			//title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 10,
+			pageSize: 5,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'descripcion ASC',

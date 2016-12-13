@@ -44,7 +44,7 @@ try
 
 			$consulta = 'UPDATE persona as per, coordinador as coor, asignatura as asi 
 						 SET coor.id_coordinador = "'.$_POST['id_coordinador'].'", coor.id_asignatura = "'.$_POST['id_asignatura'].'",
-						 per.nombre = "'.$_POST['nombre'].'",per.dni = "'.$_POST['dni'].'", coor.dpto = "'.$_POST['dpto'].'"
+						 per.nombre = "'.$_POST['nombre'].'",per.apellidos = "'.$_POST['apellidos'].'",per.dni = "'.$_POST['dni'].'", coor.dpto = "'.$_POST['dpto'].'"
 						 WHERE per.id_persona = coor.id_coordinador
 						 AND asi.id_asignatura = coor.id_asignatura 
 						 AND coor.id_coordinador = "'.$_POST['id_coordinador'].'"';
@@ -59,21 +59,21 @@ try
 	}else if($_GET["action"] == "create"){
 
 
-			$consulta = "INSERT INTO usuario(password, username, activo, id_rol) 
-						 VALUES('" . $_POST["password"] . "','" . $_POST["username"] . "','1','3');";
+			$consulta = 'INSERT INTO usuario(password, username, activo, id_rol) 
+						 VALUES("' . $_POST['password'] . '","' . $_POST['username'] . '",1,3);';
 			
 			$result = mysqli_query($connect, $consulta);
 
-			$consulta = "INSERT INTO persona(nombre, apellidos, dni, telefono, email) 
-						 VALUES('" . $_POST["nombre"] . "', '" . $_POST["apellidos"] . "', '" . $_POST["dni"] . "', '" . $_POST["telefono"] . "','" . $_POST["email"] . "');";
+			$consulta = 'INSERT INTO persona(nombre, apellidos, dni, telefono, email) 
+						 VALUES("' . $_POST['nombre'] . '", "' . $_POST['apellidos'] . '", "' . $_POST['dni'] . '", "' . $_POST['telefono'] . '","' . $_POST['email'] . '");';
 
 			$result = mysqli_query($connect, $consulta);
 
-			$result = mysqli_query($connect, "SELECT * FROM persona WHERE dni = '" . $_POST["dni"] . "'");
+			$result = mysqli_query($connect, "SELECT * FROM persona WHERE id_persona = LAST_INSERT_ID();");
 			$row = mysqli_fetch_array($result);
 
-			$consulta = "INSERT INTO coordinador(id_coordinador, id_asignatura,dpto) 
-						 VALUES('" . $row['id_persona'] . "','" . $_POST["id_asignatura"] . "', '" . $_POST["dpto"] . "');";
+			$consulta = 'INSERT INTO coordinador(id_coordinador, id_asignatura,dpto) 
+						 VALUES("' . $row['id_persona'] . '","' . $_POST['id_asignatura'] . '", "' . $_POST['dpto'] . '");';
 
 			$result2 = mysqli_query($connect, $consulta);
 

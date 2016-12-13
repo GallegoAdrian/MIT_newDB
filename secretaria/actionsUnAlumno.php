@@ -90,15 +90,15 @@ try
 	}
 	else if($_GET["action"] == "create"){
 
-			$consulta = "SELECT mat.id_alumno FROM matricula AS mat WHERE mat.id_asignatura = '".$_POST["id_asignatura"]."' AND mat.id_alumno = '".$_GET["alumnoid"]."'";
+			$consulta = 'SELECT mat.id_alumno FROM matricula AS mat WHERE mat.id_asignatura = "'.$_POST['id_asignatura'].'" AND mat.id_alumno = "'.$_GET['alumnoid'].'"';
 
 			$result = mysqli_query($connect, $consulta);
 			$numRow = mysqli_num_rows($result);
 
 			if($numRow == 0){
 
-			$consulta = "INSERT INTO matricula(id_alumno,id_asignatura,curso_esc,convoc,nota,baixa) 
-						 VALUES('" . $_GET["alumnoid"] . "','" . $_POST["id_asignatura"] . "','" . $_POST["curso_esc"] . "','" . $_POST["convoc"] . "','" . $_POST["nota"] . "','0' );";
+			$consulta = 'INSERT INTO matricula(id_alumno,id_asignatura,curso_esc,convoc,nota,baixa) 
+						 VALUES("' . $_GET['alumnoid'] . '","' . $_POST['id_asignatura'] . '","' . $_POST['curso_esc'] . '","' . $_POST['convoc'] . '","' . $_POST['nota'] . '",'0' );';
 
 			$result = mysqli_query($connect, $consulta);
 
@@ -112,12 +112,12 @@ try
 			mysqli_close($connect);
 
 		}else{
-					$jTableResult = array();
-					$jTableResult['Result'] = "ERROR";
-					$jTableResult['Message'] = 'Este alumno ya está siendo evaluado de esta asignatura.';
-					print json_encode($jTableResult);
-					mysqli_close($connect);
-			}
+				$jTableResult = array();
+				$jTableResult['Result'] = "ERROR";
+				$jTableResult['Message'] = 'Este alumno ya está siendo evaluado de esta asignatura.';
+				print json_encode($jTableResult);
+				mysqli_close($connect);
+		}
 	}
 
 }
