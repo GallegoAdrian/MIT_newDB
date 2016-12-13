@@ -8,6 +8,10 @@ function connectDB(){
 	$usuario  = "g3s2aw";
 	$password = "1234";
 	$DB       = "g3s2aw_mit";
+	// $servidor = "g3s2aw.sdslab.cat";
+	// $usuario  = "g3s2aw";
+	// $password = "piZzarra1617";
+	// $DB       = "g3s2aw_mit";
 	$connect  = mysqli_connect($servidor,$usuario,$password,$DB);
 	mysqli_set_charset($connect, "utf8");
 
