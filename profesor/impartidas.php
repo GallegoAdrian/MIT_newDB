@@ -70,7 +70,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 			messages: spanishMessages,
 			title: 'Tabla de Alumnos',
 			paging: true,
-			pageSize: 10,
+			pageSize: 5,
 			sorting: true,
 			//ALERTA!!!!! CAMBIAR ESTO PARA QUE FUNCIONE!
 			defaultSorting: 'nombre ASC',
@@ -79,7 +79,7 @@ $asignatura = getAsignatura($_GET['a'], $connect);
 				updateAction: 'actions.php?action=update&materia='+materia
 			},
 			fields: {
-				id_alumno: {
+				id_matricula: {
 					key: true,
 					list: false
 				},

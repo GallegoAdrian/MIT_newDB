@@ -16,7 +16,7 @@ try
 			$recordCount = mysqli_num_rows($result);
 
 			$consulta = "SELECT DISTINCT asi.id_asignatura, asi.codigo, asi.descripcion FROM asignatura AS asi
-					ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
+						ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
 
@@ -25,7 +25,7 @@ try
 			while($row = mysqli_fetch_array($result)){
 				$rows[] = $row;
 			}
-			
+
 			//imprimirlos
 			$jTableResult = array();
 			$jTableResult['Result'] = "OK";
@@ -36,8 +36,10 @@ try
 
 	}else if($_GET["action"] == "update"){
 
-			$consulta = 'UPDATE asignatura 
-						 SET id_asignatura = "'.$_POST['id_asignatura'].'", codigo = "'.$_POST['codigo'].'" , descripcion = "'.$_POST['descripcion'].'"
+			$consulta = 'UPDATE asignatura
+						SET id_asignatura = "'.$_POST['id_asignatura'].'",
+						codigo = "'.$_POST['codigo'].'" ,
+						descripcion = "'.$_POST['descripcion'].'"
 						WHERE id_asignatura = "'.$_POST['id_asignatura'].'"';
 
 			$result = mysqli_query($connect, $consulta);

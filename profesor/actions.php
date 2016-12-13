@@ -11,18 +11,28 @@ try
 	if($_GET["action"] == "list"){
 		if (isset($_GET['materia'])) {
 
-			$consulta =	"SELECT al.id_alumno,pe.nombre, pe.apellidos, ma.nota 
-							FROM persona AS pe, matricula AS ma, alumno AS al, asignatura AS asi 
-							WHERE pe.id_persona = al.id_alumno AND ma.id_alumno = al.id_alumno 
-							AND ma.id_asignatura = asi.id_asignatura AND asi.codigo = '{$_GET['materia']}'";
+			$consulta =	"SELECT al.id_alumno,
+								pe.nombre,
+								pe.apellidos,
+								ma.nota
+						FROM persona AS pe, matricula AS ma, alumno AS al, asignatura AS asi
+						WHERE pe.id_persona = al.id_alumno
+						AND ma.id_alumno = al.id_alumno
+						AND ma.id_asignatura = asi.id_asignatura
+						AND asi.codigo = '{$_GET['materia']}'";
 
 			$result = mysqli_query($connect, $consulta);
 			$recordCount = mysqli_num_rows($result);
 
-			$consulta = "SELECT al.id_alumno, pe.nombre, pe.apellidos, ma.nota 
-							FROM persona AS pe, matricula AS ma, alumno AS al, asignatura AS asi 
-							WHERE pe.id_persona = al.id_alumno AND ma.id_alumno=al.id_alumno 
-							AND ma.id_asignatura = asi.id_asignatura AND asi.codigo = '{$_GET['materia']}'
+			$consulta = "SELECT ma.id_matricula,
+								pe.nombre,
+								pe.apellidos,
+								ma.nota
+						FROM persona AS pe, matricula AS ma, alumno AS al, asignatura AS asi
+						WHERE pe.id_persona = al.id_alumno
+						AND ma.id_alumno=al.id_alumno
+						AND ma.id_asignatura = asi.id_asignatura
+						AND asi.codigo = '{$_GET['materia']}'
 						ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
 
 			$result = mysqli_query($connect, $consulta);
@@ -32,7 +42,7 @@ try
 			while($row = mysqli_fetch_array($result)){
 				$rows[] = $row;
 			}
-			
+
 			//imprimirlos
 			$jTableResult = array();
 			$jTableResult['Result'] = "OK";
@@ -48,9 +58,10 @@ try
 			//comprovar que materia existe
 			//comprovar que el professor la imparte
 
-			$consulta = 'UPDATE matricula, asignatura SET matricula.nota = "'.$_POST['nota'].'" 
-						 WHERE matricula.id_asignatura = asignatura.id_asignatura 
-						 AND asignatura.codigo = "'.$_GET['materia'].'"';
+			$consulta = 'UPDATE matricula AS ma, asignatura AS asi
+						SET ma.nota = "'.$_POST['nota'].'"
+						WHERE ma.id_matricula = "'.$_POST['id_matricula'].'"
+						AND ma.id_asignatura = asi.id_asignatura';
 
 			$result = mysqli_query($connect, $consulta);
 			//imprimirlos
