@@ -39,8 +39,9 @@ require('../functions.php');
 		<section class="profile-content" >
 			<h1 class="page-header">Tabla Alumnos</h1>
 			<form>
-				<input type="text" name="name" id="name" />
-				<button type="submit" id="Filter_Button">Search</button>
+				<input type="text" name="name" id="name" value="Busca por nombre..."
+       onfocus="(this.value == 'Busca por nombre...') && (this.value = '')"
+       onblur="(this.value == '') && (this.value = 'Busca por nombre...')" />
 			</form>
 			<div id="PeopleTableContainer"></div>
 			<button id="mail" onclick="sendMail(dni);">Enviar Mail</button>
@@ -284,11 +285,25 @@ var dni = [];
 		});
 		//Load person list from server
 		$('#PeopleTableContainer').jtable('load');
+			var concat = '';
+			$('#name').keydown(function(e){
+			    $(this).data('prevVal', $(this).val());   
+			}).keyup(function(e){
 
-			$('#Filter_Button').click(function(e){
-				e.preventDefault();
+				var key = e.keyCode || e.which;
+
+				if(key === 8) {
+					var ele = $(this); 
+					var val = ele.data('prevVal'); 
+					concat = ele.val(); 
+					var removedChar = val.substring(val.length-1);
+				}else{
+					var word = String.fromCharCode(key);
+					concat = concat + word;
+					console.log(concat);
+				}
 				$('#PeopleTableContainer').jtable('load',{
-					name:$('#name').val()
+					name:concat
 				});
 			});
 		});

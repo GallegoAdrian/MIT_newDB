@@ -91,6 +91,14 @@ input[type="checkbox"]{
     background-color: #2a363b;
 }
 
+#name{
+      padding: 10px;
+    border: none;
+    background-color: #2a363b;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
 /*.jtable-title{
   display: none;
 }*/
