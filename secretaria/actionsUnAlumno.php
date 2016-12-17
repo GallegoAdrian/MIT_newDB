@@ -98,7 +98,7 @@ try
 			if($numRow == 0){
 
 			$consulta = 'INSERT INTO matricula(id_alumno,id_asignatura,curso_esc,convoc,nota,baixa) 
-						 VALUES("' . $_GET['alumnoid'] . '","' . $_POST['id_asignatura'] . '","' . $_POST['curso_esc'] . '","' . $_POST['convoc'] . '","' . $_POST['nota'] . '",'0' );';
+						 VALUES("' . $_GET['alumnoid'] . '","' . $_POST['id_asignatura'] . '","' . $_POST['curso_esc'] . '","' . $_POST['convoc'] . '","' . $_POST['nota'] . '",0 );';
 
 			$result = mysqli_query($connect, $consulta);
 

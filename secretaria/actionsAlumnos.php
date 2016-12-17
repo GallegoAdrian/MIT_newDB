@@ -10,6 +10,11 @@ try
 
 	if($_GET["action"] == "list"){
 
+
+		if(empty($_POST['name'])){
+
+
+
 			$consulta =
 			"SELECT al.id_alumno,
 				per.nombre,
@@ -50,6 +55,48 @@ try
 
 			$result = mysqli_query($connect, $consulta);
 
+			}else{
+				$name = $_POST['name'];
+
+				$consulta = "SELECT al.id_alumno,
+								per.nombre,
+								per.apellidos,
+								per.dni,
+								al.direccion,
+								per.telefono,
+								per.email,
+								us.id_rol,
+								us.password,
+								us.username,
+								us.activo
+							FROM usuario AS us, persona AS per, alumno AS al
+							WHERE us.id_usuario = per.id_persona
+							AND al.id_alumno = per.id_persona
+							AND us.id_rol = '1' AND per.nombre LIKE '%$name%'";
+
+				$result = mysqli_query($connect, $consulta);
+				$recordCount = mysqli_num_rows($result);
+
+				$consulta =
+				"SELECT al.id_alumno,
+					per.nombre,
+					per.apellidos,
+					per.dni,
+					al.direccion,
+					per.telefono,
+					per.email,
+					us.id_rol,
+					us.password,
+					us.username,
+					us.activo
+				FROM usuario AS us, persona AS per, alumno AS al
+				WHERE us.id_usuario = per.id_persona
+				AND al.id_alumno = per.id_persona
+				AND us.id_rol = '1' AND per.nombre LIKE '%$name%'
+				ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";";
+
+				$result = mysqli_query($connect, $consulta);
+			}
 
 			$rows = array();
 			while($row = mysqli_fetch_array($result)){

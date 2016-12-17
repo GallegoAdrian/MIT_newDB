@@ -110,7 +110,7 @@ require('../functions.php');
 											createAction: 'actionsUnGrado.php?action=create&gradoid=' + staffData.record.id_grado,
 											},
 										fields: {
-											id_grado: {
+											id_grd_alu: {
 												key: true,
 												list: false,
 												edit: false,

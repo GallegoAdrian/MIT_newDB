@@ -17,7 +17,7 @@ require('../functions.php');
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link href="../css/styleLoginPage.css" rel="stylesheet" type="text/css" type="text/css">
 	<link href="../css/styleTableAndMenu.css" rel="stylesheet" type="text/css" >
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../js/main.js"></script> <!-- Resource jQuery -->
     
@@ -38,6 +38,10 @@ require('../functions.php');
 	<main id="general" class="cd-main-content">
 		<section class="profile-content" >
 			<h1 class="page-header">Tabla Alumnos</h1>
+			<form>
+				<input type="text" name="name" id="name" />
+				<button type="submit" id="Filter_Button">Search</button>
+			</form>
 			<div id="PeopleTableContainer"></div>
 			<button id="mail" onclick="sendMail(dni);">Enviar Mail</button>
 			<!-- <button id="pdf" onclick="downloadPDF(dni);">Descargar PDF</button> -->
@@ -280,6 +284,13 @@ var dni = [];
 		});
 		//Load person list from server
 		$('#PeopleTableContainer').jtable('load');
+
+			$('#Filter_Button').click(function(e){
+				e.preventDefault();
+				$('#PeopleTableContainer').jtable('load',{
+					name:$('#name').val()
+				});
+			});
 		});
 	function sendMail(dni){
 
