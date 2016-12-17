@@ -85,7 +85,13 @@ input, textarea {
 
 textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
 	outline: 0;
+	/*border: 2px solid #A43937;*/
+	background-color: #ccc;
+}
+
+#password:focus, #username:focus {
 	border: 2px solid #A43937;
+	background-color: #fff;
 }
 
 .login-box .form-group:nth-of-type(3){
