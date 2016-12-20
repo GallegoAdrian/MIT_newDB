@@ -14,8 +14,8 @@ if (isset($_POST)) {
 	$m->Host = 'smtp.gmail.com';
 	$m->Username = 'webmonkeypd@gmail.com';
 	$m->Password = 'piZzarra1617';
-	$m->SMTPSecure = 'ssl';
-	$m->Port = 465;
+	$m->SMTPSecure = 'tls';
+	$m->Port = 587;
 
 	$m->From = 'webmonkeypd@gmail.com';
 	$m->FromName = 'Secretaria MIT';

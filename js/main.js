@@ -30,29 +30,24 @@ jQuery(document).ready(function($){
 		}
 	});
 
-
-    
-
-
-
 	//close lateral menu clicking outside the menu itself
-	$content_wrapper.on('click', function(event){
-		if( !$(event.target).is('#cd-menu-trigger, #cd-menu-trigger span') ) {
-			$lateral_menu_trigger.removeClass('is-clicked');
-			$('#title').css('transform', 'translateX(0)');
-			$('.profile-content').css('margin-right', '0px');
-			$navigation.removeClass('lateral-menu-is-open');
-			$content_wrapper.removeClass('lateral-menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-				$('body').removeClass('overflow-hidden');
-			});
-			$('#cd-lateral-nav').removeClass('lateral-menu-is-open');
-			//check if transitions are not supported
-			if($('html').hasClass('no-csstransitions')) {
-				$('body').removeClass('overflow-hidden');
-			}
+	// $content_wrapper.on('click', function(event){
+	// 	if( !$(event.target).is('#cd-menu-trigger, #cd-menu-trigger span') ) {
+	// 		$lateral_menu_trigger.removeClass('is-clicked');
+	// 		$('#title').css('transform', 'translateX(0)');
+	// 		$('.profile-content').css('margin-right', '0px');
+	// 		$navigation.removeClass('lateral-menu-is-open');
+	// 		$content_wrapper.removeClass('lateral-menu-is-open').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+	// 			$('body').removeClass('overflow-hidden');
+	// 		});
+	// 		$('#cd-lateral-nav').removeClass('lateral-menu-is-open');
+	// 		//check if transitions are not supported
+	// 		if($('html').hasClass('no-csstransitions')) {
+	// 			$('body').removeClass('overflow-hidden');
+	// 		}
 
-		}
-	});
+	// 	}
+	// });
 
 	//open (or close) submenu items in the lateral menu. Close all the other open submenu items.
 	$('.item-has-children').children('a').on('click', function(event){
